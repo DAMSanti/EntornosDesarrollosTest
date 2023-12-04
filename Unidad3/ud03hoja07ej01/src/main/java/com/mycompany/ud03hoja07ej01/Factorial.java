@@ -20,8 +20,12 @@ public class Factorial {
     }
     
     public static void imprimeNumeros(int n) {
-        for (int i = 1; i<=n ; i++) {
-            System.out.print(i);
+        //for (int i = 1; i<=n ; i++) {
+         //   System.out.print(i);
+        //}
+        if (n>0) {
+            imprimeNumeros(n-1);
+            System.out.print(n); // atencion a esto
         }
     }
     
@@ -30,7 +34,7 @@ public class Factorial {
     }
     
     public static int potencia(int b, int e) {
-        return e>=1 ? b * (potencia(b, e-1)) : 1;     
+        return e>=1 ? b * (potencia(b, e-1)) : 1;
     }    
     
 }

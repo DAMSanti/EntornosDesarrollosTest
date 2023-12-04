@@ -11,6 +11,6 @@ public class Ud03hoja06ej01 {
         t1.desbloquea(1245);
         t1.desbloquea(t1.getPin());
         t1.desbloquea(t1.getPin());
-        t1.pagar(155.12F, t1.getPin(), "Esta es la descripcion", true);
+        t1.pagar(155.12F, t1.getPin(), "Esta es la descripcion", false);
     }
 }
