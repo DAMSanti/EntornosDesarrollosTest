@@ -1,0 +1,32 @@
+package com.mycompany.ud04hoja01ej07;
+
+import java.util.Arrays;
+
+/**
+ *
+ * @author DAM104
+ */
+public class Ud04hoja01ej07 {
+
+    public static void main(String[] args) {
+        int[] numeros = new int[10];
+        for (int i=0; i<=numeros.length-1; i++) {
+            numeros[i] = (int) Math.floor(Math.random()*10);
+        }
+        for (int i=0; i<=numeros.length-1; i++) {
+            System.out.print(numeros[i]);
+        }   
+        System.out.println();
+        Arrays.sort(numeros);
+        for (int i = 0; i < numeros.length/2; i++) {
+                    int j = numeros.length-i-1;
+                    int a = numeros[i];
+                    int b = numeros[j];
+                    numeros[i] = b;
+                    numeros[j] = a;
+        }
+        for (int i=0; i<=numeros.length-1; i++) {
+            System.out.print(numeros[i]);
+        }   
+    }
+}
