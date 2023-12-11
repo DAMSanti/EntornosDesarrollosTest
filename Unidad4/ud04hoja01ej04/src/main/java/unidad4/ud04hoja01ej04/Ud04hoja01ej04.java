@@ -20,10 +20,11 @@ public class Ud04hoja01ej04 {
                     numeros2[j] = a;
         }
         for (int i=0; i<=numeros.length-1; i++) {
-            System.out.println(numeros[i]);
+            System.out.print(numeros[i]);
         }     
+        System.out.println();
         for (int i=0; i<=numeros2.length-1; i++) {
-            System.out.println(numeros2[i]);
+            System.out.print(numeros2[i]);
         }             
     }
 }

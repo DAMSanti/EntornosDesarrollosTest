@@ -12,8 +12,9 @@ public class Ud04hoja01ej05 {
             numeros[i] = (int) Math.floor(Math.random()*10);
         }
         for (int i=0; i<=numeros.length-1; i++) {
-            System.out.println(numeros[i]);
+            System.out.print(numeros[i]);
         }
+        System.out.println();
         for (int i = 0; i < numeros.length/2; i++) {
                     int j = numeros.length-i-1;
                     int a = numeros[i];
@@ -22,7 +23,7 @@ public class Ud04hoja01ej05 {
                     numeros[j] = a;
         }
         for (int i=0; i<=numeros.length-1; i++) {
-            System.out.println(numeros[i]);
+            System.out.print(numeros[i]);
         }               
     }
 }
