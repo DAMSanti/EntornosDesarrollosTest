@@ -17,8 +17,8 @@ public class Ud03hoja08ej01 {
             System.out.println("Introduce color calcetin, . para salir");
             String c = teclado.nextLine();
             switch (c) {
-                case "B" -> negro += 1;
-                case "W" -> blanco += 1;
+                case "B" -> negro++;
+                case "W" -> blanco++;
                 case "." -> {
                     if ((negro-blanco==0) && (negro%2==0) && (blanco%2==0) && (negro>0)) {
                         System.out.println("EMPAREJADOS");
