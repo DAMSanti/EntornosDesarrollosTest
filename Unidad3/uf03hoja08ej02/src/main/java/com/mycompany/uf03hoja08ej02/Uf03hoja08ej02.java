@@ -14,7 +14,7 @@ public class Uf03hoja08ej02 {
         float descuento = 0;
         int n = 0;
         Scanner teclado = new Scanner(System.in);
-        while (n == -1) {
+        while (n != -1) {
             System.out.println("Introduce total a pagar, -1 para salir:");
             n = teclado.nextInt();
             int bola = (int) Math.floor(Math.random() * 4);
@@ -36,7 +36,7 @@ public class Uf03hoja08ej02 {
                     descuento = 0.1f;
                 }
             }
-            System.out.printf("Ha salido la bola %s, %d por ciento de descuento: %,.2f Importe con el descuento: %,.2f\n", colorbola, (int) (descuento * 100), (n * descuento), (n - n * descuento));
+            System.out.printf("Ha salido la bola %s, %d%% de descuento: %,.2f\nImporte con el descuento: %,.2f\n", colorbola, (int) (descuento * 100), (n * descuento), (n - n * descuento));
         }
     }
 }
