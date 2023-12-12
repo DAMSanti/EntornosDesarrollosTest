@@ -12,23 +12,25 @@ public class Ud03hoja08ej01 {
         int negro = 0, blanco = 0 ;
         boolean salir = false ;
         Scanner teclado = new Scanner(System.in);
+        System.out.println("Seleccion de calcetines del Dr Black&White");
         while(!salir) {
-            System.out.println("Seleccion de calcetines del Dr Black&White");
             System.out.println("Introduce color calcetin, . para salir");
             String c = teclado.nextLine();
             switch (c) {
                 case "B" -> negro++;
                 case "W" -> blanco++;
                 case "." -> {
-                    if ((negro-blanco==0) && (negro%2==0) && (blanco%2==0) && (negro>0)) {
+                    if ((negro%2==0) && (blanco%2==0) && (negro>0) && (blanco>0)) {
                         System.out.println("EMPAREJADOS");
                     } else if ((negro>blanco) && (negro%2!=0)) {
                         System.out.println("NEGRO SOLITARIO");
                     } else if ((negro<blanco) && (blanco%2!=0)) {
                         System.out.println("BLANCO SOLITARIO");
-                    } else {
+                    } else if (negro>0 & blanco>0) {
                         System.out.println("PAREJA MIXTA");
-                    } 
+                    } else {
+                        System.out.println("No has introducido calcetines.");
+                    }
                     salir = true ;
                 }
             }
