@@ -20,11 +20,11 @@ public class Ud03hoja08ej01 {
                 case "B" -> negro++;
                 case "W" -> blanco++;
                 case "." -> {
-                    if ((negro-blanco==0) && (negro%2==0) && (blanco%2==0) && (negro>0)) {
+                    if ((negro-blanco==0) && (negro%2==0) && (blanco%2==0)) {
                         System.out.println("EMPAREJADOS");
-                    } else if ((negro>blanco) && (negro%2!=0)) {
+                    } else if ((negro!=blanco) && (negro%2!=0)) {
                         System.out.println("NEGRO SOLITARIO");
-                    } else if ((negro<blanco) && (blanco%2!=0)) {
+                    } else if ((negro!=blanco) && (blanco%2!=0)) {
                         System.out.println("BLANCO SOLITARIO");
                     } else {
                         System.out.println("PAREJA MIXTA");
