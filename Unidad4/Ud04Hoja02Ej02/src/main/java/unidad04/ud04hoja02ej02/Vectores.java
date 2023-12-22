@@ -1,31 +1,35 @@
 package unidad04.ud04hoja02ej02;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM104
  */
 public class Vectores {
-    private int[] numeros = new int[5];
+    private int[] numeros;
     
-    public Vectores(int n1, int n2, int n3, int n4, int n5) {
-        numeros[0]=n1;
-        numeros[1]=n2;
-        numeros[2]=n3;
-        numeros[3]=n4;
-        numeros[4]=n5;        
+    public Vectores() {
+        numeros = new int[5];
+        Scanner teclado = new Scanner(System.in);
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print("[" + (i+1) + "/" + numeros.length + "] Introduce un valor: ");
+            numeros[i]=teclado.nextInt();
+        }
+        System.out.println("Todos las valores han sido introducidos.\n");       
     }
     
     public int menor() {
-        int menor = 99999;
-        for (int i = 0; i < numeros.length; i++) {
+        int menor = numeros[0];
+        for (int i = 1; i < numeros.length; i++) {
             menor = numeros[i] < menor ? numeros[i] : menor ;
         }
         return menor;
     }
     
     public int mayor() {
-        int mayor = 0;
-        for (int i = 0; i < numeros.length; i++) {
+        int mayor = numeros[0];
+        for (int i = 1; i < numeros.length; i++) {
             mayor = numeros[i] > mayor ? numeros[i] : mayor ;
         }
         return mayor;

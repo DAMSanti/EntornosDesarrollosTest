@@ -1,5 +1,7 @@
 package unidad04.ud04hoja02ej01;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM104
@@ -7,12 +9,14 @@ package unidad04.ud04hoja02ej01;
 public class Operaciones {
     private int[] numeros = new int[5];
     
-    public Operaciones(int n1, int n2, int n3, int n4, int n5) {
-        numeros[0]=n1;
-        numeros[1]=n2;
-        numeros[2]=n3;
-        numeros[3]=n4;
-        numeros[4]=n5;
+    public Operaciones() {
+        numeros = new int[5];
+        Scanner teclado = new Scanner(System.in);
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print("[" + (i+1) + "/" + numeros.length + "] Introduce un valor: ");
+            numeros[i]=teclado.nextInt();
+        }
+        System.out.println("Todos las valores han sido introducidos.\n");       
     }
     
     public void porDos() {
@@ -32,14 +36,14 @@ public class Operaciones {
         System.out.println("");
     }
     
-    public void sumaPares() {
+    public int sumaPares() {
         int suma = 0;
         for (int i = 0; i < numeros.length; i++) {
-            if (i%2==0) {
+            if (i%2==0 && i!=0) {
                 suma += numeros[i]; 
             }
         }
-        System.out.println(suma);
+        return suma;
     }
 }
 

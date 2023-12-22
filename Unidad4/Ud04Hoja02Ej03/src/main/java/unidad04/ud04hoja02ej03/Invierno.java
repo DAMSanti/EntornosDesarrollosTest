@@ -11,8 +11,9 @@ public class Invierno {
     
     public Invierno(int dimension) {
         temperaturas = new double[dimension];
-        Scanner teclado = new Scanner(System.in);
+        Scanner teclado;
         for (int i = 0; i < temperaturas.length; i++) {
+            teclado = new Scanner(System.in);
             System.out.print("[" + (i+1) + "/" + temperaturas.length + "] Introduce una temperatura: ");
             temperaturas[i]=teclado.nextDouble();
         }
@@ -35,15 +36,18 @@ public class Invierno {
         return fahrenheit;
     }
     
-    public void mostrar(double[] temperaturas) {
+    public String mostrar(double[] temperaturas) {
+        String texto = "[";
         for (int i = 0; i < temperaturas.length; i++) {
             if (i == temperaturas.length-1) {
-                System.out.print(temperaturas[i]);
+                texto += String.format("%,.2fº", temperaturas[i]);
             } else {
-                System.out.print(temperaturas[i] + "-");
+                texto += String.format("%,.2fº", temperaturas[i]).concat("-");
             }
         }
-        System.out.println("");
+        texto += ("]");
+        //System.out.println("");
+        return texto;
     }
 }
 

@@ -18,20 +18,20 @@ public class Alumno {
             System.out.print("[" + (i+1) + "/" + notas.length + "] Introduce una nota: ");
             notas[i]=teclado.nextInt();
         }
-        System.out.println("\nTodas las notas han sido introducidas.");
+        System.out.println("Todas las notas han sido introducidas.");
     }
     
     public int menor() {
-        int menor = 99999;
-        for (int i = 0; i < notas.length; i++) {
+        int menor = notas[0];
+        for (int i = 1; i < notas.length; i++) {
             menor = notas[i] < menor ? notas[i] : menor ;
         }
         return menor;
     }
     
     public int mayor() {
-        int mayor = 0;
-        for (int i = 0; i < notas.length; i++) {
+        int mayor = notas[0];
+        for (int i = 1; i < notas.length; i++) {
             mayor = notas[i] > mayor ? notas[i] : mayor ;
         }
         return mayor;
