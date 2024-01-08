@@ -19,7 +19,7 @@ public class Examen03Ej01 {
         int n;
         do {
             System.out.println("---- Centralita Telefónica ----");
-            System.out.print("1.- Llamar\n2.-Enviar Mensaje\n3.-Ver Saldo\n4.- Salir\nSelecciona una opción (1-4): ");
+            System.out.print("1.-Llamar\n2.-Enviar Mensaje\n3.-Ver Saldo\n4.-Salir\nSelecciona una opción (1-4): ");
             n = teclado.nextInt();
             switch(n){
                 case 1->{
