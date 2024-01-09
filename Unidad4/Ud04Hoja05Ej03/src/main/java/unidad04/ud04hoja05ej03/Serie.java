@@ -11,7 +11,6 @@ public class Serie {
     private char signo;
     
     public Serie() {
-        
         Scanner teclado = new Scanner(System.in);
         System.out.print("Cuantos numeros quieres introducir? ");
         int n = teclado.nextInt();
@@ -27,11 +26,12 @@ public class Serie {
     }
     
     public int resultado() {
-        int resultado = 0;
+        int resultado = 1;
         if (this.signo=='+') {
             for (int i = 0; i < lista.length; i++) {
                 resultado += lista[i];
             }
+            resultado -= 1;
         } else if (this.signo=='*') {
             for (int i = 0; i < lista.length; i++) {
                 resultado *= lista[i];
