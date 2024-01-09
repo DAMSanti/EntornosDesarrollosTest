@@ -41,7 +41,7 @@ public class Sopa {
                 System.out.println("Ha habido un problema, la palabra introducida es mayor que el espacio disponible");
             } else {
                 for (int i = 0; i < palabra.length(); i++) {
-                    sopa[i+x][y] = palabra.charAt(i);
+                    sopa[i+x-1][y-1] = palabra.charAt(i);
                 }
             }
         } else {
@@ -49,7 +49,7 @@ public class Sopa {
                 System.out.println("Ha habido un problema, la palabra introducida es mayor que el espacio disponible");
             } else {
                 for (int i = 0; i < palabra.length(); i++) {
-                    sopa[x][i+y] = palabra.charAt(i);
+                    sopa[x-1][i+y-1] = palabra.charAt(i);
                 }
             }            
         }
