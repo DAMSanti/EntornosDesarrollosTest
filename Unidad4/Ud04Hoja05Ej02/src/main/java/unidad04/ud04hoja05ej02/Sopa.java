@@ -23,7 +23,7 @@ public class Sopa {
                 sopa[i][j] = letra;
             }
         }
-        System.out.println("Matriz inicializada");
+        System.out.println("--Matriz inicializada--\n");
     }
     
     public void mostrar() {
