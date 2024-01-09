@@ -19,7 +19,7 @@ public class Sopa {
         char letra = 0;
         for (int i = 0; i < sopa.length; i++) {
             for (int j = 0; j < sopa[i].length; j++) {
-                letra = (char) Math.floor(Math.random()*25+65);
+                letra = (char) Math.floor(Math.random()*26+65);
                 sopa[i][j] = letra;
             }
         }
@@ -45,7 +45,7 @@ public class Sopa {
                 }
             }
         } else {
-            if (palabra.length()>sopa.length-y) {
+            if (palabra.length()>sopa[x].length-y) {
                 System.out.println("Ha habido un problema, la palabra introducida es mayor que el espacio disponible");
             } else {
                 for (int i = 0; i < palabra.length(); i++) {
