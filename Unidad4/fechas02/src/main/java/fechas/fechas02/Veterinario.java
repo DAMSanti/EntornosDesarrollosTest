@@ -39,7 +39,7 @@ public class Veterinario {
     public void recibir() {
         String nombre;
         int ano, mes, dia;        
-        Scanner teclado = new Scanner(System.in);
+        Scanner teclado;
         System.out.print("Nombre de la mascota: ");
         teclado = new Scanner(System.in);
         nombre = teclado.nextLine();
