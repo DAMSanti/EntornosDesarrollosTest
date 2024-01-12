@@ -6,45 +6,56 @@ import java.util.Scanner;
  *
  * @author Santi
  */
+
 public class Banco {
     private Cliente[] clientes;
-    private int contcliente = 0;
+    private static int contcliente = 0;
     
     public Banco(int n) {
         this.clientes = new Cliente[n];
+        System.out.println("Filial bancaria registrada satisfactoriamente con " + n + " clientes como maximo.");
     }
     
     public void ingresar() {
-        this.clientes[contcliente].setCodigo(contcliente);
-        Scanner teclado = new Scanner(System.in);
-        System.out.println("Introduce el nombre del cliente: ");
-        this.clientes[contcliente].setNombre(teclado.nextLine());
-        teclado = new Scanner(System.in);
-        System.out.println("Introduce los apellidos del cliente: ");
-        this.clientes[contcliente].setApellidos(teclado.nextLine());
-        System.out.println("Introduce el telefono del cliente: ");
-        this.clientes[contcliente].setTelefono(teclado.nextLine());
-        System.out.println("Introduce el saldo del cliente: ");
-        this.clientes[contcliente].setSaldo(teclado.nextDouble());
-                contcliente++;
+        if (clientes.length!=contcliente) {
+            this.clientes[contcliente] = new Cliente();
+            this.clientes[contcliente].setCodigo(contcliente);
+            Scanner teclado = new Scanner(System.in);
+            System.out.println("Introduce el nombre del cliente: ");
+            this.clientes[contcliente].setNombre(teclado.nextLine());
+            teclado = new Scanner(System.in);
+            System.out.println("Introduce los apellidos del cliente: ");
+            this.clientes[contcliente].setApellidos(teclado.nextLine());
+            System.out.println("Introduce el telefono del cliente: ");
+            this.clientes[contcliente].setTelefono(teclado.nextLine());
+            System.out.println("Introduce el saldo del cliente: ");
+            this.clientes[contcliente].setSaldo(teclado.nextDouble());
+            contcliente++;            
+        } else {
+            System.out.println("La lista de clientes está llena, deberás eliminar un cliente para introducir otro.");
+        }
+
     }
     
     public String buscar(int n) {
         String cadena = "";
-        if (n>this.contcliente) {
+        if (n>this.contcliente || n<0) {
             cadena = "No hay ningun cliente con este codigo.";
         } else {
-            cadena = String.format("CODIGO: %d\nNOMBRE: %s\nAPELLIDOS: %s\nTELEFONO: %s\nSALDO: %,.2f", clientes[n].getCodigo(), clientes[n].getNombre(), clientes[n].getApellidos(), clientes[n].getTelefono(), clientes[n].getSaldo());
+            cadena = String.format("CODIGO: %04d\nNOMBRE: %s\nAPELLIDOS: %s\nTELEFONO: %s\nSALDO: %,.2f€", clientes[n].getCodigo(), clientes[n].getNombre(), clientes[n].getApellidos(), clientes[n].getTelefono(), clientes[n].getSaldo());
         }
         return cadena;
     }
     
     public void eliminar(int n) {
-        if (n>this.contcliente) {
+        if (n>this.contcliente || n<0) {
             System.out.println("No se puede eliminar un cliente que no existe.");
         } else {
-            for (int i = n; i < this.contcliente-1; i++) {
-                this.clientes[n] = this.clientes[n+1];
+            for (int i = n; i < this.contcliente; i++) {
+                this.clientes[n].setNombre(this.clientes[n+1].getNombre());
+                this.clientes[n].setApellidos(this.clientes[n+1].getApellidos());
+                this.clientes[n].setTelefono(this.clientes[n+1].getTelefono());
+                this.clientes[n].setSaldo(this.clientes[n+1].getSaldo());
             }
             this.contcliente--;
         }
@@ -53,8 +64,9 @@ public class Banco {
     public String mostrar() {
         String cadena = "";
         for (int i = 0; i < this.contcliente; i++) {
-            
+            cadena += String.format("CODIGO: %04d\nNOMBRE: %s\nAPELLIDOS: %s\nTELEFONO: %s\nSALDO: %,.2f€\n\n", clientes[i].getCodigo(), clientes[i].getNombre(), clientes[i].getApellidos(), clientes[i].getTelefono(), clientes[i].getSaldo());
         }
+        return cadena;
     }
 }
 
