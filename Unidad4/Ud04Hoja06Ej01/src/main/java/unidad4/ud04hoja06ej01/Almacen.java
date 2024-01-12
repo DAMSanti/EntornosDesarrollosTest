@@ -15,21 +15,9 @@ public class Almacen {
     }
     
     public void llenar() {
-        Scanner teclado;
-        String codigo, descripcion;
-        int cantidad;
         System.out.println("EDICION DEL INVENTARIO");
         for (int i = 0; i < articulos.length; i++) {
-            teclado = new Scanner(System.in);
-            System.out.print("[" + (i+1) + "/" + articulos.length + "] Introduce el codigo del producto: ");
-            codigo = teclado.nextLine();
-            teclado = new Scanner(System.in);
-            System.out.print("Introduce la descripción del producto: ");
-            descripcion = teclado.nextLine();
-            teclado = new Scanner(System.in);
-            System.out.print("Introduce la cantidad: ");
-            cantidad = teclado.nextInt();
-            articulos[i] = new Articulo(codigo, descripcion, cantidad);
+            articulos[i] = new Articulo();
         }
     }
     
@@ -42,8 +30,10 @@ public class Almacen {
     public String lowStock() {
         String cadena = "ARTICULOS CON STOCK BAJO:\n";
         for (int i = 0; i < articulos.length; i++) {
-            if (this.articulos[i].lowStock()) {
-                cadena += articulos[i].toString() + "\n";
+            if (this.articulos[i].lowStock(10)) {
+                cadena += "CODIGO: " + articulos[i].getCodigo() + "\n"
+                        +"DESCRIPCION: " + articulos[i].getDescripcion() + "\n"
+                        +"STOCK: " + articulos[i].getExistencias() + "\n\n";
             }
         }
         return cadena;

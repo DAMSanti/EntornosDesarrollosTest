@@ -1,5 +1,7 @@
 package unidad4.ud04hoja06ej01;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM104
@@ -8,15 +10,34 @@ public class Articulo {
     private int existencias;
     private String codigo, descripcion;
     
-    public Articulo(String codigo, String descripcion, int existencias) {
-        this.codigo = codigo ;
-        this.descripcion = descripcion ;
-        this.existencias = existencias ;
+    public Articulo() {
+        Scanner teclado;
+        teclado = new Scanner(System.in);
+        System.out.print("Introduce el codigo del producto: ");
+        this.codigo = teclado.nextLine();
+        teclado = new Scanner(System.in);
+        System.out.print("Introduce la descripción del producto: ");
+        this.descripcion = teclado.nextLine();
+        teclado = new Scanner(System.in);
+        System.out.print("Introduce la cantidad: ");
+        this.existencias = teclado.nextInt();
+    }
+
+    public int getExistencias() {
+        return existencias;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
     
-    public boolean lowStock() {
+    public boolean lowStock(int n) {
         boolean low = false;
-        if (existencias < 10 ) {
+        if (existencias < n ) {
             low = true;
         }
         return low;
