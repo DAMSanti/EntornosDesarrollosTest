@@ -103,19 +103,17 @@ public class Agenda {
             if (this.agenda[i].getNombre().toLowerCase().contains(nombre.toLowerCase())) {
                 cadena += String.format("OPCION: %d\nNOMBRE: %s\nTELEFONO: %s\n\n", cont+1, agenda[i].getNombre(), agenda[i].getTelefono());
                         
-                int[] aux = new int[lista.length];
+                int[] aux = new int[lista.length + 1];
                 for (int j = 0; j < aux.length; j++) {
-                    aux[j]=lista[j];
-                }
+                    if (i<lista.length-1 ) {
+                        aux[j]=lista[j];
+                    } else {
+                        lista[i] = i;
+                    }              
+                } 
 
                 lista = new int[lista.length+1];
-                for (int j = 0; j < lista.length; j++) {
-                    if (j<lista.length-1) {
-                        lista[j] = aux[j];
-                    } else {
-                        lista[j] = i;
-                    }
-                } 
+                aux = lista;
                 cont++;
             }
         }

@@ -1,7 +1,5 @@
 package unidad4.ud04hoja06ej01;
 
-import java.util.Scanner;
-
 /**
  *
  * @author DAM104
