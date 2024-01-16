@@ -42,12 +42,20 @@ public class Alumno {
     }
     
     public int[] tresMejores() {
-        int[] tres = new int[3];
+        int[] tres;
         Arrays.sort(notas);
-        for (int i = 0; i < 3; i++) {
-            tres[i] = notas[notas.length-i-1];
-        }
+        tres = Arrays.copyOfRange(notas, notas.length-3, notas.length);
         return tres;
+    }
+    
+    public void show() {
+        for (int i = 0; i < notas.length; i++) {
+            if (i==0) {
+                System.out.print(notas[i]);
+            } else {
+                System.out.print(" - " + notas[i]);
+            }
+        }
     }
 }
 
