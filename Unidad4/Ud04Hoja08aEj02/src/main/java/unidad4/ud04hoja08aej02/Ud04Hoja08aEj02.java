@@ -22,7 +22,7 @@ public class Ud04Hoja08aEj02 {
         System.out.println("\n\n");
         
         Scanner teclado = new Scanner(System.in);
-        System.out.println("De que numero quieres saber la tabla de multiplicar? ");
+        System.out.print("De que numero quieres saber la tabla de multiplicar? ");
         int n= teclado.nextInt();
         if (n>9 && n<0) {
             System.out.println("El valor introducido no esta entre 1 y 9");
