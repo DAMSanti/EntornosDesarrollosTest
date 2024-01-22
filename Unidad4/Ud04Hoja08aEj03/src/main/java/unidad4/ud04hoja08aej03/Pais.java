@@ -51,7 +51,7 @@ public class Pais {
     
     public boolean existe(String nombre) {
         boolean existe = false ;
-        for (int i = 0; i < ciudades; i++) {
+        for (int i = 0; i < ciudades && !existe; i++) {
             if (cities[i].getNombre().equalsIgnoreCase(nombre)) {
                 existe = true ;
             }
@@ -67,6 +67,7 @@ public class Pais {
         return suma /= ciudades;
     }
     
+    @Override
     public String toString() {
         String cadena = String.format("PAIS: %s\nNº de ciudades: %d\nCIUDADES: ", this.nombre, ciudades);
         for (int i = 0; i < ciudades; i++) {
