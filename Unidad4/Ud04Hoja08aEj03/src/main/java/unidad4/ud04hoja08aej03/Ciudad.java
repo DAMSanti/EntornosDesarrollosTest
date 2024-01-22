@@ -16,6 +16,7 @@ public class Ciudad {
         this.habitantes = habitantes ;
     }
     
+    @Override
     public String toString() {
         return String.format("%s tiene %d habitantes.", this.nombre, this.habitantes);
     }
