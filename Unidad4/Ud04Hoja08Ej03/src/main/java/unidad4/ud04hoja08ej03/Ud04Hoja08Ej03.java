@@ -1,5 +1,7 @@
 package unidad4.ud04hoja08ej03;
 
+import static java.lang.Integer.parseInt;
+
 /**
  *
  * @author DAM104
@@ -29,7 +31,11 @@ public class Ud04Hoja08Ej03 {
     }
     
     public static void main(String[] args) {
-        if (args.length>1) {
+        if (args.length==2) {
+            Ud04Hoja08Ej03 e1 = new Ud04Hoja08Ej03();
+            e1.setNombre(args[0]);
+            int sueldo = parseInt(args[1], 10);
+            e1.setSueldo(sueldo);
             show(args[0], Double.parseDouble(args[1]));
             obligacionImpositiva(Double.parseDouble(args[1]));
         } else {
