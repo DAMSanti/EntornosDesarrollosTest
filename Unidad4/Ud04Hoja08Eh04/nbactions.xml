@@ -13,7 +13,7 @@
                 <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs>2 5</exec.appArgs>
-                <exec.mainClass>unidad4.ud04hoja08ej04.Ud04Hoja08Ej04</exec.mainClass>
+                <exec.mainClass>unidad4.ud04hoja08ej04.Operaciones</exec.mainClass>
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
@@ -30,7 +30,7 @@
                 <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs>2 5</exec.appArgs>
-                <exec.mainClass>unidad4.ud04hoja08ej04.Ud04Hoja08Ej04</exec.mainClass>
+                <exec.mainClass>unidad4.ud04hoja08ej04.Operaciones</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
             </properties>
@@ -47,7 +47,7 @@
             <properties>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
-                <exec.mainClass>unidad4.ud04hoja08ej04.Ud04Hoja08Ej04</exec.mainClass>
+                <exec.mainClass>unidad4.ud04hoja08ej04.Operaciones</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <exec.appArgs>2 5</exec.appArgs>
             </properties>

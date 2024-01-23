@@ -7,7 +7,7 @@ import static java.lang.Integer.parseInt;
  * @author DAM104
  */
 
-public class Ud04Hoja08Ej04 {
+public class Operaciones {
 
     public static void main(String[] args) {
         if (args.length==2) {
