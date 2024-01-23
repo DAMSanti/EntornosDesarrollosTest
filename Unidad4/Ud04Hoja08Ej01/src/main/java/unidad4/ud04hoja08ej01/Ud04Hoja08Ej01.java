@@ -10,12 +10,12 @@ import static java.lang.Integer.parseInt;
 public class Ud04Hoja08Ej01 {
 
     public static void main(String[] args) {
-        if (args.length>0) {
+        if (args.length>0 && args.length<4) {
             int digitos = args[0].length();
             int numero = parseInt(args[0], 10);
             int resultado = 0;
             for (int i = 0; i < digitos; i++) {
-                resultado += Math.pow(parseInt(args[0].substring(i, i+1), 10), digitos);
+                resultado += (int) Math.pow(parseInt(args[0].substring(i, i+1), 10), digitos);
             }
             if (resultado == numero) {
                 System.out.printf("El numero %s es un numero Armstrong", numero);
@@ -23,10 +23,12 @@ public class Ud04Hoja08Ej01 {
                 System.out.println("No es un numero Armstrong");
             }
         } else {
-            System.out.println("No se ha introducido ningun dato.");
+            System.out.println("No se ha introducido ningun dato o el dato introducido es mayor de 3 digitos.");
         }
     }
 }
+
+
 
 
 /*
