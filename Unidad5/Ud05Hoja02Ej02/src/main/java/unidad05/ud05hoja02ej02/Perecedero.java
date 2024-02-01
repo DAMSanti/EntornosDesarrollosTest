@@ -17,12 +17,12 @@ public class Perecedero extends Articulo{
     
     @Override
     public String toString() {
-        return super.toString().concat(String.format("Fecha De Caducidad: %d-%d", ano, mes));
+        return super.toString().concat(String.format("Fecha De Caducidad: %d-%d", mes, ano));
     }
     
     public void caducado() {
         if (LocalDate.now().getYear() > ano || (LocalDate.now().getYear() == ano && LocalDate.now().getMonthValue() > mes)) {
-            System.out.printf("CODIGO: %s\nDescripcion: %s", super.codigo, super.descripcion );
+            System.out.printf("CODIGO: %s\nDescripcion: %s\n-----------------\n", super.codigo, super.descripcion );
         }
     }
 }

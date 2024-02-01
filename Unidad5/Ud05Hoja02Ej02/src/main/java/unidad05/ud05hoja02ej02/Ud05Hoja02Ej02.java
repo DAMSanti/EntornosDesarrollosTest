@@ -9,65 +9,45 @@ import java.util.Scanner;
 public class Ud05Hoja02Ej02 {
 
     public static void main(String[] args) {
-        Scanner teclado;
-        String nom, desc;
-        double precio, descuento;
-        int ano, mes;
-        Articulo[] lista = new Articulo[2];
-        for (int i = 0; i < lista.length; i++) {
-            if (i<(lista.length/2)) {
-                System.out.println("Introduce el nombre del articulo: ");
-                teclado = new Scanner(System.in);
-                nom = teclado.nextLine();
-                System.out.println("Introduce la descripcion del articulo: ");
-                teclado = new Scanner(System.in);
-                desc = teclado.nextLine();
-                System.out.println("Introduce el precio del articulo: ");
-                teclado = new Scanner(System.in);
-                precio = teclado.nextDouble();
-                System.out.println("Introduce el año de caducidad del articulo: ");
-                teclado = new Scanner(System.in);
-                ano = teclado.nextInt();
-                System.out.println("Introduce el mes de caducidad del articulo: ");
-                teclado = new Scanner(System.in);
-                mes = teclado.nextInt();
-                lista[i] = new Perecedero(nom, desc, precio, ano, mes); 
-            } else {
-                System.out.println("Introduce el nombre del articulo: ");
-                teclado = new Scanner(System.in);
-                nom = teclado.nextLine();
-                System.out.println("Introduce la descripcion del articulo: ");
-                teclado = new Scanner(System.in);
-                desc = teclado.nextLine();
-                System.out.println("Introduce el precio del articulo: ");
-                teclado = new Scanner(System.in);
-                precio = teclado.nextDouble();
-                System.out.println("Introduce el descuento del articulo: ");
-                teclado = new Scanner(System.in);
-                descuento = teclado.nextDouble();
-                lista[i] = new EnPromocion(nom, desc, precio, descuento); 
-            }
-        }
-        System.out.println("\nARTICULOS EN PROMOCION");
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i] instanceof EnPromocion) {
-                System.out.println(lista[i].toString());                
-            }
-        }
-        System.out.println("\nARTICULOS PERECEDEROS");
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i] instanceof Perecedero) {
-                System.out.println(lista[i].toString());                
-            }
-        }
-        System.out.println("\nARTICULOS CADUCADOS");
-        Perecedero aux;
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i] instanceof Perecedero) {
-                aux = (Perecedero) lista[i];
-                aux.caducado();
+        Scanner teclado = new Scanner(System.in);
+        Articulo[] lista = new Articulo[10];
+        for (int i = 0; i < 10; i++) {
+            switch(i) {
+                case 0 -> lista[i] = new Perecedero("Fruta", "Productos frescos", 19.99, 2021, 1);
+                case 1 -> lista[i] = new Perecedero("Yogurt", "Productos frescos", 9.99, 2025, 11);
+                case 2 -> lista[i] = new Perecedero("Paracetamol", "Medicamentos", 1.17, 2031, 6);
+                case 3 -> lista[i] = new Perecedero("Puerros", "Productos frescos", 4.50, 2023, 8);
+                case 4 -> lista[i] = new Perecedero("Merluza", "Productos frescos", 23.99, 2024, 1);
+                case 5 -> lista[i] = new EnPromocion("DVD", "Tecnología", 60.50, 10);
+                case 6 -> lista[i] = new EnPromocion("Bicicleta", "Deporte", 350.10, 5);
+                case 7 -> lista[i] = new EnPromocion("Maquina de Escribir", "Tecnología", 160.00, 60);
+                case 8 -> lista[i] = new EnPromocion("Tarjeta Regalo", "Regalos", 20.00, 3);
+                case 9 -> lista[i] = new EnPromocion("Television", "Tecnología", 1250.50, 15);                
             }
         }
         
+        Articulo[] promo = Articulo.BuscaTipo(lista, 1);
+        for (int i = 0; i < promo.length; i++) {
+            System.out.println(promo[i].toString());
+        }
+        System.out.println("\n\n--------------Presiona ENTER para continuar----------------");
+        teclado.nextLine();
+        
+        Articulo[] perec = Articulo.BuscaTipo(lista, 2);
+        for (int i = 0; i < perec.length; i++) {
+            System.out.println(perec[i].toString());
+        }
+       
+        System.out.println("\n\n--------------Presiona ENTER para continuar----------------");
+        teclado.nextLine();
+        
+        Perecedero aux;
+        System.out.println("\n--- ARTICULOS CADUCADOS ---");
+        for (int i = 0; i < perec.length; i++) {
+            aux = (Perecedero) perec[i];
+            aux.caducado();
+        }
+        System.out.println("\n--- AARTICULO CON MAYOR DESCUENTO ---");
+        System.out.println(EnPromocion.mayorDescuento(promo).toString());
     }
 }
