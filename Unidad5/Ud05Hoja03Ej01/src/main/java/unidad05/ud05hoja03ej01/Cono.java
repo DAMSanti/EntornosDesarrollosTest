@@ -11,7 +11,7 @@ public class Cono extends Figura {
     }
     
     public float area() {
-        return (float) (Math.PI*radio*Math.sqrt((Math.pow(radio, 2)+Math.pow(altura, 2))+ Math.PI*Math.pow(radio, 2)));
+        return (float) (Math.PI*radio*(Math.sqrt((Math.pow(radio, 2)+Math.pow(altura, 2))+ Math.PI*Math.pow(radio, 2))));
     }
     
     public float volumen() {
