@@ -1,5 +1,7 @@
 package unidad05.ud05hoja04ej02;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DAM104
@@ -13,6 +15,26 @@ public class Programador extends Empleado{
         this.lineasDeCodigoPorHora = lineas;
         this.lenguajeDominante = lenguaje;
     }
+    
+    public Programador() {
+        super();
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduce los datos especificos de programador");
+        System.out.print("Introduce las lineas de codigo por hora: ");
+        this.lineasDeCodigoPorHora = teclado.nextInt();
+        System.out.print("Introduce el lenguaje dominante: ");
+        teclado = new Scanner(System.in);
+        this.lenguajeDominante = teclado.nextLine();
+    }
+    
+    public int getLineas() {
+        return this.lineasDeCodigoPorHora;
+    }
+
+    public String getLenguajeDominante() {
+        return lenguajeDominante;
+    }
+
 }
 
 
