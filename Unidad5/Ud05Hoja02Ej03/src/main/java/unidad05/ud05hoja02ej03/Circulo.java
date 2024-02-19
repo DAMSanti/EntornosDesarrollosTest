@@ -6,10 +6,10 @@ package unidad05.ud05hoja02ej03;
  */
 public class Circulo extends Forma{
     int lados;
-    String id = "Circulo";
-    
+
     public Circulo() {
-        lados = 0;
+        id = "Circulo";
+        lados = 1;
     }
     
     @Override

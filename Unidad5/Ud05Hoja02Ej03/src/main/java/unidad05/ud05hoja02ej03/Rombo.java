@@ -6,10 +6,10 @@ package unidad05.ud05hoja02ej03;
  */
 public class Rombo extends Forma {
     int lados;  
-    String id = "Rombo";
     
     public Rombo() {
         lados = 4;
+        id = "Rombo";
     }
     
     @Override

@@ -7,10 +7,10 @@ package unidad05.ud05hoja02ej03;
  */
 public class Triangulo extends Forma{
     int lados;  
-    String id = "Triangulo";
     
     public Triangulo() {
         lados = 3;
+        id = "Triangulo";
     }
     
     @Override
