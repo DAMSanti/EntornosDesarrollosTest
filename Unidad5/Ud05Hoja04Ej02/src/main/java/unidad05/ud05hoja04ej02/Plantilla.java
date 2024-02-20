@@ -16,7 +16,9 @@ public class Plantilla {
     }
     
     public void insertar(Empleado empleado) {
-        trabajadores[contEmpleados++] = empleado;
+        if (contEmpleados < trabajadores.length) {
+            trabajadores[contEmpleados++] = empleado;
+        }
     }
     
     public String muestraPlantilla() {
