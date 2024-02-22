@@ -5,8 +5,8 @@ package unidad05.ud05hoja05ej02;
  * @author DAM104
  */
 public class Mamifero {
-    String raza, alimento;
-    int npatas;
+    protected String raza, alimento;
+    protected int npatas;
     
     public Mamifero(String raza, int npatas, String alimento) {
         this.raza = raza;
