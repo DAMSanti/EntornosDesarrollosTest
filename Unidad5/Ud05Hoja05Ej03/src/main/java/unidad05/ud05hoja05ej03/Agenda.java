@@ -18,6 +18,9 @@ public class Agenda {
     public void insertar(Contacto contacto) {
         if (contContactos < contactos.length) {
             contactos[contContactos++] = contacto;
+            System.out.printf("El contacto %s ha sido insertado correctamente en la posicion %d\n", contacto.getNombre(), contContactos);
+        } else {
+            System.out.println("No se ha podido insertar el contacto porque la lista está llena.\n");
         }
     }
     
@@ -35,7 +38,11 @@ public class Agenda {
                 for (int j = i+1; j < contContactos; j++) {
                     contactos[j-1] = contactos[j];
                 }
+                System.out.printf("El contacto %s ha sido borrado correctamente.\n", contactos[i].getNombre());
                 contContactos--;
+                i--;
+            } else {
+                System.out.println("No se ha encontrado el contacto buscado.");
             }
         }
     }
