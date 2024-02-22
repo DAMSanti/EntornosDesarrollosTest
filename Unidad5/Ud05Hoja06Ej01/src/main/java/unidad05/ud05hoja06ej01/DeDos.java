@@ -14,17 +14,24 @@ public class DeDos implements Series {
     
     @Override
     public void getSiguiente() {
-        int siguiente = this.valor + 2;
+        this.anterior = this.valor;
+        this.valor = this.valor + 2;
     }
 
     @Override
     public void reiniciar() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.valor = inicio;
+        this.anterior = this.valor - 2;
     }
 
     @Override
     public void setComenzar(int x) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.valor = x;
+        this.anterior = this.valor - 2;
+    }
+    
+    public int getValor() {
+        return this.valor;
     }
     
 }
