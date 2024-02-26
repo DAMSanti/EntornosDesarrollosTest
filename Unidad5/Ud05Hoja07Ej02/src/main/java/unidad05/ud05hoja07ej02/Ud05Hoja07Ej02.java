@@ -18,33 +18,17 @@ public class Ud05Hoja07Ej02 {
 
         while (!valido) {
             try {
-                System.out.print("Por favor, introduzca el primer número entero:");
-                num1 = teclado.nextInt();
-                valido = true;
+                num1 = Teclado.introduceEntero1("Introduce un numero entero mayor de 1 y menor de 30 ambos incluidos", 1, 30);
+                valido = true ;
             } catch (InputMismatchException e) {
                 System.out.println("Eso no es un número entero válido. Inténtalo de nuevo.");
-                teclado.next();
+            } catch (ExcepcionLimite e) {
+                System.out.println("El valor no esta entre los limites requeridos.");
             }
         }
 
-        valido = false;
-
-        while (!valido) {
-            try {
-                System.out.print("Por favor, introduzca el segundo número entero:");
-                num2 = teclado.nextInt();
-                valido = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Eso no es un número entero válido. Inténtalo de nuevo.");
-                teclado.next();
-            }
-        }
-
-        try {
-            int resultado = num1 / num2;
-            System.out.println("El resultado de la división es: " + resultado);
-        } catch (ArithmeticException e) {
-            System.out.println("No se puede dividir por cero.");
-        }
+        
+        num2 = Teclado.introduceEntero("Introduce un numero entero mayor de 5 y menor de 10 ambos incluidos", 5, 10);
+        Teclado.divide(num1, num2);        
     }
 }
