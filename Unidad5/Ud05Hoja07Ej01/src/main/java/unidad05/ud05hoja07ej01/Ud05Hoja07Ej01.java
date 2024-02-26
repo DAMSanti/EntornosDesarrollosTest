@@ -19,8 +19,8 @@ public class Ud05Hoja07Ej01 {
             try {
                 System.out.print("Introduce un numero entero: ");
                 n = new Scanner(System.in).nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Valor no válido");
+            } catch (InputMismatchException excepcion) {
+                System.out.println("Valor no válido, " + excepcion.toString());
                 repetir = true ;
             }             
         } while (repetir);
@@ -30,19 +30,10 @@ public class Ud05Hoja07Ej01 {
                 System.out.print("Introduce un numero decimal: ");
                 teclado = new Scanner(System.in);
                 m = teclado.nextDouble();   
-            } catch (InputMismatchException e) {
-                System.out.println("Valor no válido");
+            } catch (InputMismatchException excepcion) {
+                System.out.println("Valor no válido, " + excepcion.getMessage());
                 repetir = true;
             }
         } while (repetir);    
     }
 }
-
-
-/*
-
-1.- Realiza un programa que controle mediante excepciones la introducción de datos correctos
-para una variable de tipo entero y para otra de tipo Double, y que se repita mientras que no se
-introduzca un dato correcto.
-
-*/
