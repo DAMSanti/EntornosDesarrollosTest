@@ -8,9 +8,14 @@ public class Ud05Hoja09Ej04 {
 
     public static void main(String[] args) {
         try {
-            throw new MiExcepcion("Toma ERROR chulo");
+            throw new MiExcepcion("Fuera de Limites");
         } catch (MiExcepcion e) {
-            System.out.println(e.toString());
+            System.out.println(e.getMessage());
+        }
+        try {
+            throw new MiExcepcion("Otro error diferente");
+        } catch (MiExcepcion e) {
+            System.out.println(e.getMessage());
         }
     }
 }
