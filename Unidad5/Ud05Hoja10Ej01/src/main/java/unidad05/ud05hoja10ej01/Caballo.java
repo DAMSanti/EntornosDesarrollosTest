@@ -1,11 +1,14 @@
 package unidad05.ud05hoja10ej01;
 
+import java.util.Arrays;
+
 /**
  *
  * @author DAM104
  */
-public class Caballo {
-    public int capacidad, ocupacion;
+public class Caballo implements PuedeMontarse{
+    public final int capacidad;
+    public int ocupacion;
     public Guerrero[] ocupantes;
     
     public Caballo(Guerrero[] lista) {
@@ -17,9 +20,73 @@ public class Caballo {
         }
         if (comprueba == false) {
             this.capacidad = 100;
+            this.ocupantes = new Guerrero[100];
+            this.ocupacion = 0;
         } else {
             this.capacidad = lista.length;
-            this.ocupantes = lista;
+            for (int i = 0; i < lista.length; i++) {
+                this.ocupantes[i] = lista[i];
+                ocupacion++;
+            }
+        }
+    }
+    
+    public Caballo(Guerrero guerrero, int capacidad) {
+        boolean comprueba = true;
+        if (!(guerrero instanceof Griego)) {
+            comprueba = false;
+        }
+        if (comprueba == false) {
+            System.out.println("No se ha podido añadir el guerrero");
+            this.capacidad = 100;
+            this.ocupantes = new Guerrero[100];
+            this.ocupacion = 0;
+        } else {
+            this.capacidad = capacidad;
+            this.ocupantes[0] = guerrero;
+            System.out.println("Guerrero añadido con exito");
+            ocupacion++;
+        }
+    }
+    
+    public void ordenar() {
+        Arrays.sort(ocupantes, 0, ocupacion);
+    }
+    
+    public int buscar(String nombre) {
+        int pos = 0;
+        ordenar();
+        boolean encontrado = false;
+        for (int i = 0; i < ocupantes.length && !encontrado; i++) {
+            if (ocupantes[i].getNombre().equalsIgnoreCase(nombre)) {
+                pos = i;
+                encontrado = true ;
+            }
+        }
+        return pos;
+    }
+
+    @Override
+    public int montar(Guerrero guerrero) {
+        int aux = 0;
+        if (ocupacion < ocupantes.length) {
+            if (!(guerrero instanceof Griego)) {
+                aux = -2;
+            } else {
+                ocupantes[ocupacion++] = guerrero;
+                aux = ocupacion;
+            }
+        } else if (ocupacion == ocupantes.length) {
+            aux = -1;
+        }
+        return aux;
+    }
+
+    @Override
+    public void desmontar() {
+        this.ocupacion = 0;
+        for (int i = 0; i < ocupantes.length; i++) {
+            ocupantes[i] = null;
         }
     }
 }
