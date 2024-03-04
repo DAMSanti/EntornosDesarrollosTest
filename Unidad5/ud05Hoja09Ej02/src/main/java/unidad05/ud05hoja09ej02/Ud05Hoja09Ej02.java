@@ -8,7 +8,8 @@ package unidad05.ud05hoja09ej02;
 public class Ud05Hoja09Ej02 {
 
     public static void main(String[] args) {
-        Prueba p1 = null;
+        Prueba p1 = new Prueba();
+        p1 = null;
         
         try {
             p1.getAtributo();
