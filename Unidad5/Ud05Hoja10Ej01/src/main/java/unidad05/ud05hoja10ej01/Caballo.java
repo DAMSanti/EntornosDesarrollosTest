@@ -54,7 +54,7 @@ public class Caballo implements PuedeMontarse{
     }
     
     public int buscar(String nombre) {
-        int pos = 0;
+        int pos = -1;
         ordenar();
         boolean encontrado = false;
         for (int i = 0; i < ocupantes.length && !encontrado; i++) {

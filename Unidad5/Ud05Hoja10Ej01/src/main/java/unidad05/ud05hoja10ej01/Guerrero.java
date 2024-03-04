@@ -1,10 +1,12 @@
 package unidad05.ud05hoja10ej01;
 
+import java.util.Objects;
+
 /**
  *
  * @author DAM104
  */
-public abstract class Guerrero {
+public abstract class Guerrero implements Comparable<Guerrero> {
     private String nombre;
     private int edad, fuerza;
     private boolean herido, muerto;
@@ -61,5 +63,22 @@ public abstract class Guerrero {
     
     public boolean getMuerto() {
         return muerto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+    @Override
+    public int compareTo(Guerrero guerrero) {
+        int aux;
+        if (this.fuerza == guerrero.fuerza) {
+            aux = 0;
+        } else if (this.fuerza < guerrero.fuerza) {
+            aux = -1;
+        } else {
+            aux = 1;
+        }
+        return aux;
     }
 }
