@@ -7,7 +7,7 @@ package unidad05.ud05hoja11ej06;
 public class Ud05Hoja11Ej06 {
 
     public static void main(String[] args) {
-    }
+    } 
     
     public static char caracterEn(String palabra, int n) throws Exception {
         char aux = 0;

@@ -16,7 +16,7 @@ public class Ud05Hoja11Ej07 {
         try {
             System.out.println(caracterEn(lect_teclado, 7));
         } catch (Exception e) {
-            System.out.println("Ha habido un error: " + e.getMessage());
+            System.out.println("Has intentado recuperar una posición de la cadena de caracteres que no existe");
         }  
     }
 }

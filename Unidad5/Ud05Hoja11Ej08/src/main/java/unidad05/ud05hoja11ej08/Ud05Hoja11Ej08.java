@@ -20,7 +20,7 @@ public class Ud05Hoja11Ej08 {
                     throw new NumeroNegativoExcepcion();
                 }                
             } catch (NumeroNegativoExcepcion e) {
-                System.out.println("Has introducido un numero negativo.");
+                System.out.print(e.toString());
                 salir = true;
             }
         }
