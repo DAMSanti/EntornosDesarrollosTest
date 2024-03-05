@@ -48,7 +48,6 @@ public class Ejercicio3 {
     }
     
     public static void imprimirMatriz(int[][] Estudiantes) {
-        System.out.print("[");
         for (int i = 0; i < Estudiantes.length; i++) {
             System.out.print("[");
             for (int j = 0; j < Estudiantes[i].length; j++) {
