@@ -31,6 +31,4 @@ public class Contacto implements Comparable<Contacto> {
     public int compareTo(Contacto o) {
         return this.getNombre().compareToIgnoreCase(o.getNombre());
     }
-    
-
 }
