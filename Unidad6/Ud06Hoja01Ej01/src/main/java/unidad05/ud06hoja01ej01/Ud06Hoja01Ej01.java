@@ -10,7 +10,6 @@ public class Ud06Hoja01Ej01 {
         Integer[] array = new Integer[0];
         
         
-        // Test the program
         Contenedor<Integer> contenedor;
         contenedor = new Contenedor<>(array);
         
