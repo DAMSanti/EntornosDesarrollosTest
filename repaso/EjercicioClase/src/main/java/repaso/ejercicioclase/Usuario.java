@@ -40,6 +40,14 @@ public class Usuario {
         }
         return Objects.equals(this.apellido, other.apellido);
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
     
     
 }

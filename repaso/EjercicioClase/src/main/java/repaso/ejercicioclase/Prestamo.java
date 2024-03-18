@@ -15,5 +15,22 @@ public class Prestamo {
         this.libroprestado = libro;
         this.recipiente = user;
         this.fechaPrestamo = fecha;
-    }    
+    }   
+
+    public Libro getLibroprestado() {
+        return libroprestado;
+    }
+
+    public Usuario getRecipiente() {
+        return recipiente;
+    }
+
+    public LocalDate getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public LocalDate getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+    
 }
