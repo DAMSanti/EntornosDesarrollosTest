@@ -6,7 +6,7 @@ import java.util.Arrays;
  *
  * @author DAM104
  */
-public class Contenedor<T> implements Pila {
+public class Contenedor<T> implements Pila<T> {
 
     private T[] array;
 
@@ -50,12 +50,12 @@ public class Contenedor<T> implements Pila {
     }
 
     @Override
-    public void guardar(Object nuevo) {
+    public void guardar(T nuevo) {
         insertarAlPrincipio((T) nuevo);
     }
 
     @Override
-    public Object extraer() {
+    public T extraer() {
         return extraerDelPrincipio();
     }
 }
