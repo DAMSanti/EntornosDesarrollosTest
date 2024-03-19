@@ -171,9 +171,9 @@ public class Teclado {
             System.arraycopy(array, 0, nuevoArray, 1, array.length);
             nuevoArray[0] = elemento;
             return nuevoArray;
-        } catch (NullPointerException e) {
+        } /*catch (NullPointerException e) {
             System.out.println("Error: El array es nulo.");
-        }
+        }*/
     }
 
     public static T[] agregarAlFinal(T[] array, T elemento) {
@@ -181,26 +181,26 @@ public class Teclado {
             T[] nuevoArray = Arrays.copyOf(array, array.length + 1);
             nuevoArray[array.length] = elemento;
             return nuevoArray;
-        } catch (NullPointerException e) {
+        }/* catch (NullPointerException e) {
             System.out.println("Error: El array es nulo.");
-        }
+        }*/
     }
 
     public static T[] quitarDelPrincipio(T[] array) {
         try {
             T[] nuevoArray = Arrays.copyOfRange(array, 1, array.length);
             return nuevoArray;
-        } catch (NullPointerException e) {
+        }/* catch (NullPointerException e) {
             System.out.println("Error: El array es nulo.");
-        }
+        }*/
     }
 
     public static T[] quitarDelFinal(T[] array) {
         try {
             T[] nuevoArray = Arrays.copyOf(array, array.length - 1);
             return nuevoArray;
-        } catch (NullPointerException e) {
+        }/* catch (NullPointerException e) {
             System.out.println("Error: El array es nulo.");
-        }
+        }*/
     }
 }
