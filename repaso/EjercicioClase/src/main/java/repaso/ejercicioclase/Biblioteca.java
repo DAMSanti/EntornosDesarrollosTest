@@ -104,7 +104,20 @@ public class Biblioteca implements Identificable {
             System.out.println("El usuario no es cliente de la biblioteca.");
         }
     }
-    
+
+    public void devolver(Libro libro, Usuario user) {
+        boolean condicion = false;
+        for (int i = 0; i < prestamos.length && !condicion; i++) {
+            if ( prestamos[i]!=null && prestamos[i].getLibroprestado().equals(libro) && prestamos[i].getRecipiente().equals(user) && prestamos[i].getFechaDevolucion() == null) {
+                condicion = true;
+                prestamos[i].setFechaDevolucion(Teclado.introduceFecha("Introduce la fecha de devolución", prestamos[i].getFechaPrestamo()));
+            }
+        }
+        if (!condicion) {
+            System.out.println("No se puede devolver el libro.");
+        }
+    }
+
     public void ordenar() {
         Arrays.sort(coleccion, 0, contLibros);
     }
@@ -112,14 +125,14 @@ public class Biblioteca implements Identificable {
     @Override
     public String imprime() {
         String info = "";
-        ordenar();
+        //ordenar();
         for (int i = 0; i < contLibros; i++) {
             info += coleccion[i].imprime();
         }
-        for (int i = 0; i < socios.length; i++) {
+        for (int i = 0; i < socios.length && socios[i]!=null; i++) {
             info += socios[i].toString();
         }
-        for (int i = 0; i < prestamos.length; i++) {
+        for (int i = 0; i < prestamos.length && prestamos[i]!=null; i++) {
             info += prestamos[i].toString();
         }
         return info;
