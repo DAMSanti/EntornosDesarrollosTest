@@ -17,8 +17,12 @@ public class Asociacion {
     }
 
     public void insertar(Persona persona) {
-        personas.add(persona);
-        personas.sort(Comparator.comparing(Persona::getDni));
+        if (personas.add(persona)) {
+            personas.sort(Comparator.comparing(Persona::getDni));
+            System.out.println("Persona introducida correctamente");
+        } else {
+            System.out.println("Persona no introducida");
+        }
     }
     
     public String buscar(String dni) {
@@ -58,13 +62,15 @@ public class Asociacion {
     */
     
     private double calcularCuota(int edad) {
+        double cuota = 0;
         if (edad >= 5 && edad <= 10) {
-            return 1;
+            cuota = 1;
         } else if (edad >= 11 && edad <= 17) {
-            return 2.5;
+            cuota =  2.5;
         } else {
-            return 3.5;
+            cuota = 3.5;
         }
+        return cuota;
     }
 
     public void mostrarDatosPorDni() {

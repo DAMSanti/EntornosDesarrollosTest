@@ -2,6 +2,7 @@ package unidad6.ud06hoja02ej02;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 /**
@@ -79,11 +80,7 @@ public class Persona {
     }
 
     public int getEdad() {
-        int edad = LocalDate.now().getYear() - fechaNacimiento.getYear();
-        if (LocalDate.now().getMonthValue() < fechaNacimiento.getMonthValue()) {
-            edad--;
-        }
-        return edad;
+        return (int) ChronoUnit.YEARS.between(fechaNacimiento, LocalDate.now());
     }
 
     @Override

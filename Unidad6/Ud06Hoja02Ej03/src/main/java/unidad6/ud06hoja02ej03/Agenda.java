@@ -17,13 +17,14 @@ public class Agenda {
     }    
     
     public boolean insertar(Persona persona) {
-        try {
-            personas.add(persona);
-            personas.sort(Comparator.comparing(Persona::getDni));
-            return true;
-        } catch (Exception e) {
-            return false;
+        boolean condicion = false;
+        if (personas.add(persona)) {
+            System.out.println("Persona introducida correctamente");
+            condicion = true;
+        } else {
+            System.out.println("Persona no introducida");
         }
+        return condicion;
     }
     
     public boolean borrar(String dni) {
