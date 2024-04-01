@@ -24,7 +24,7 @@ public class Teclado {
      *  Añadir limitaciones para introduccion de texto.
      */
 
-    public static T leerDato(Class<T> tipoDato, String mensaje, boolean soloPositivos) <T> {
+    public static  <T> T leerDato(Class<T> tipoDato, String mensaje, boolean soloPositivos) {
         System.out.print(mensaje + ": ");
         String dato = teclado.nextLine();
         T resultado = null;
