@@ -3,6 +3,7 @@ package unidad6.ud06hoja02ej03;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -28,12 +29,26 @@ public class Agenda {
     }
     
     public boolean borrar(String dni) {
-        boolean borrado = false;
+        /* boolean borrado = false;
         for (Persona persona : personas) {
             if (persona.getDni().equals(dni)) {
                 personas.remove(persona);
                 borrado = true;
             }
+        }
+        return borrado; */
+        boolean borrado = false;
+        Iterator iterador = personas.iterator();
+        while (iterador.hasNext()) {
+            Persona p = (Persona) iterador.next();
+            if (p.getDni().equalsIgnoreCase(dni)) {
+                iterador.remove();
+                System.out.println("El usuario ha sido eliminado correctamente");
+                borrado = true;
+            }
+        }
+        if (!borrado) {
+            System.out.println("No se ha encontrado el usuario que se intenta borrar");
         }
         return borrado;
     }    
@@ -65,11 +80,14 @@ public class Agenda {
         }
     }
     
-    public void modificar(String dni, Persona persona) {
+    public boolean modificar(String dni, Persona persona) {
+        boolean modificado = false;
         for (int i = 0; i < personas.size(); i++) {
             if (personas.get(i).getDni().equals(dni)) {
                 personas.set(i, persona);
+                modificado = true;
             }
         }
+        return modificado;
     }    
 }

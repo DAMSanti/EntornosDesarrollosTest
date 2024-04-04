@@ -37,7 +37,7 @@ public class Persona {
     }
 
     public static boolean validarNombre(String nombre) {
-        return nombre.matches("[a-zA-Z]{3,}");
+        return nombre.matches("[a-zA-ZÁ-ÿ]{3,}");
     }
 
     public static boolean validarDNI(String dni) {
