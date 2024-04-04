@@ -13,12 +13,13 @@ public class Ud06Hoja02Ej04 {
         Partidos p4 = new Partidos("Racing", "Racing", 3, 3);
 
         Temporada temporada1 = new Temporada();
-        temporada1.insertar(p1);
-        temporada1.insertar(p2);
-        temporada1.insertar(p3);
-        temporada1.insertar(p4);
-        System.out.println(temporada1.numPartidos());
+        System.out.println(temporada1.insertar(p1) ? "Usuario introducido correctamente" : "No se ha podido introducir el jugador");
+        System.out.println(temporada1.insertar(p2) ? "Usuario introducido correctamente" : "No se ha podido introducir el jugador");
+        System.out.println(temporada1.insertar(p3) ? "Usuario introducido correctamente" : "No se ha podido introducir el jugador");
+        System.out.println(temporada1.insertar(p4) ? "Usuario introducido correctamente" : "No se ha podido introducir el jugador");
+        System.out.println("Numeros de partidos registrados " + temporada1.numPartidos());
         temporada1.infoTemporada();
+        System.out.println("Eliminamos todos los partidos que no son empates.");
         temporada1.dejaEmpates();
         temporada1.infoTemporada();
     }

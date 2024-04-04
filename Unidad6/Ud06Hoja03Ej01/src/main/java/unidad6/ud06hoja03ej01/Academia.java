@@ -15,11 +15,20 @@ public class Academia {
     }
 
     public void introduceFinal(Curso curso) {
-        cursos.addLast(curso);
+        System.out.println(cursos.add(curso) ? "Se ha insertado el curso correctamente" : "No se ha podido introducir el curso");
     }
 
     public void introduceIndex(Curso curso, int index) {
-        cursos.add(index, curso);
+        int tamano = cursos.size();
+        if (index > tamano && index > 0) {
+            cursos.add(index, curso);
+            if (cursos.size()!=tamano) {
+                System.out.println("Se ha introducido el curso de forma satisfactoria.");
+            }
+        } else {
+            System.out.println("Se ha introducido un indice incorrecto");
+        }
+        
     }
 
     private Curso buscar(String codigo) {

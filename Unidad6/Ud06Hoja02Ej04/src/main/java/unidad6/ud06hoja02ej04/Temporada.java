@@ -14,8 +14,8 @@ public class Temporada {
         this.temporada = new ArrayList<>();
     }    
     
-    public void insertar(Partidos partido) {
-        temporada.add(partido);
+    public boolean insertar(Partidos partido) {
+        return temporada.add(partido);
     }
     
     public int numPartidos() {
