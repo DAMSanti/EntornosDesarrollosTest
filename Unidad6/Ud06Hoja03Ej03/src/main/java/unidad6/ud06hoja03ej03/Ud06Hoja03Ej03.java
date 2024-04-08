@@ -7,6 +7,6 @@ package unidad6.ud06hoja03ej03;
 public class Ud06Hoja03Ej03 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ContenedorApp container = new ContenedorApp();
     }
 }

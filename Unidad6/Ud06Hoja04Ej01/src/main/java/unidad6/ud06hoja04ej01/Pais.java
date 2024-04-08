@@ -2,7 +2,7 @@ package unidad6.ud06hoja04ej01;
 
 /**
  *
- * @author rathm
+ * @author Santi
  */
 public class Pais {
     private String pais;

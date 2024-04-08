@@ -2,6 +2,7 @@ package unidad6.ud06hoja03ej03;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -11,9 +12,9 @@ class Contenedor {
 
     private String codigo;
     private String origen;
-    private String fechaHoraAlmacenamiento;
+    private LocalDateTime fechaHoraAlmacenamiento;
 
-    public Contenedor(String codigo, String origen, String fechaHoraAlmacenamiento) {
+    public Contenedor(String codigo, String origen, LocalDateTime fechaHoraAlmacenamiento) {
         this.codigo = codigo;
         this.origen = origen;
         this.fechaHoraAlmacenamiento = fechaHoraAlmacenamiento;
@@ -27,13 +28,13 @@ class Contenedor {
         return origen;
     }
 
-    public String getFechaHoraAlmacenamiento() {
+    public LocalDateTime getFechaHoraAlmacenamiento() {
         return fechaHoraAlmacenamiento;
     }
 
     public long getTiempoEnAlmacen() {
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime almacenamiento = LocalDateTime.parse(fechaHoraAlmacenamiento);
+        LocalDateTime almacenamiento = this.fechaHoraAlmacenamiento;
         Duration duration = Duration.between(almacenamiento, now);
         long tiempoEnAlmacen = duration.toDays();
         return tiempoEnAlmacen;
@@ -41,7 +42,9 @@ class Contenedor {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
         return "Código: " + codigo + ", Origen: " + origen + ", Fecha y hora de almacenamiento: "
-                + fechaHoraAlmacenamiento;
+                + fechaHoraAlmacenamiento.format(formatter);
     }
 }

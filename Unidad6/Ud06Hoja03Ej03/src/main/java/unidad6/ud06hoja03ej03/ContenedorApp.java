@@ -1,5 +1,9 @@
 package unidad6.ud06hoja03ej03;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -58,6 +62,7 @@ public class ContenedorApp {
     private static Contenedor almacenarContenedor() {
         Scanner scanner = new Scanner(System.in);
         Contenedor contenedor = null;
+        LocalDateTime fechaHoraFormated = null;
         
         boolean datosValidos = false;
         do {
@@ -73,20 +78,27 @@ public class ContenedorApp {
                 String origen = scanner.nextLine();
 
                 if (!origen.matches("[A-Z][a-z]{0,15}")) {
-                    throw new IllegalArgumentException(
-                            "El origen debe empezar con una letra mayúscula seguida de un máximo de 15 letras minúsculas");
+                    throw new IllegalArgumentException("El origen debe empezar con una letra mayúscula seguida de un máximo de 15 letras minúsculas");
                 }
 
-                System.out.print("Ingrese la fecha y hora de almacenamiento (dd/mm/yyyy hh:mm): ");
+                System.out.print("Ingrese la fecha y hora de almacenamiento (dd/mm/yyyy hh:mm:ss): ");
                 String fechaHora = scanner.nextLine();
-
-                contenedor = new Contenedor(codigo, origen, fechaHora);
+                try {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    fechaHoraFormated = LocalDateTime.parse(fechaHora, formatter);
+                    datosValidos = true;
+                } catch (DateTimeParseException e) {
+                    System.out.println("Error: Formato de fecha inválido. Introduce una fecha en el formato correcto.");
+                }
+                contenedor = new Contenedor(codigo, origen, fechaHoraFormated);
                 contenedores.add(contenedor);
 
                 System.out.println("Contenedor almacenado correctamente");
                 datosValidos = true;
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 System.out.println("Error al almacenar el contenedor: " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Error excepcion desconodida: " + e.getMessage());
             }
         } while (!datosValidos);
         return contenedor;
@@ -99,11 +111,12 @@ public class ContenedorApp {
         String codigo = scanner.nextLine();
 
         Contenedor contenedorEncontrado = null;
-        for (Contenedor contenedor : contenedores) {
-            if (contenedor.getCodigo().equals(codigo)) {
-                contenedorEncontrado = contenedor;
-                break;
-            }
+        boolean valido = false ;
+        for (int i = 0; i < contenedores.size() && !valido; i++) {        
+            if (contenedores.get(i).getCodigo().equals(codigo)) {
+                contenedorEncontrado = contenedores.get(i);
+                valido = true;
+            }            
         }
 
         if (contenedorEncontrado != null) {

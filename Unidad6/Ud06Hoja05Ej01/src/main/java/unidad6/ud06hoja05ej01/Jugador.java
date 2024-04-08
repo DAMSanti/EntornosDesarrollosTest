@@ -1,5 +1,6 @@
 package unidad6.ud06hoja05ej01;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 /**
@@ -42,15 +43,14 @@ public class Jugador implements Comparable<Jugador> {
         //return this.nombre.equalsIgnoreCase(other.nombre);
     }
 
-    @Override
     public int compareTo(Jugador o) {
-        int aux = 0;
-        if (this.estatura < o.estatura) {
-            aux = -1;
-        } else if (this.estatura > o.estatura) {
-            aux = 1;
-        }
-        return aux;
+        int comparacionNombres = this.nombre.compareToIgnoreCase(o.nombre);
+
+        //if (comparacionNombres == 0) {
+        //    return Double.compare(this.estatura, o.estatura);
+        //}
+
+        return comparacionNombres;
     }
 
     @Override
