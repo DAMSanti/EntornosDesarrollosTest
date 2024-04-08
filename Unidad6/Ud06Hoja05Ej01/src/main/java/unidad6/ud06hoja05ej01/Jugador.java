@@ -23,7 +23,7 @@ public class Jugador implements Comparable<Jugador> {
     public double getEstatura() {
         return estatura;
     }
-
+/*
     @Override
     public int hashCode() {
         int hash = 5;
@@ -47,7 +47,7 @@ public class Jugador implements Comparable<Jugador> {
         // return Objects.equals(this.nombre.toLowerCase(), other.nombre.toLowerCase());
         // return this.nombre.equalsIgnoreCase(other.nombre);
     }
-
+*/
     public int compareTo(Jugador o) {
         int aux = 0;
         if (this.estatura < o.estatura) {
