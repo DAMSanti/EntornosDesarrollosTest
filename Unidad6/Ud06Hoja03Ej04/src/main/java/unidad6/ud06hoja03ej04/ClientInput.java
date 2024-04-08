@@ -37,7 +37,7 @@ public class ClientInput {
         return clientesNoAtendidos == 0 ? -1 : (double) tiempoEsperaTotal / clientesNoAtendidos;
     }
 
-    public long tiempoEsperaMedio() {
+    public double tiempoEsperaMedio() {
         long tiempoEsperaTotal = 0;
         int clientesAtendidos = 0;
         for (Cliente cliente : clientes) {

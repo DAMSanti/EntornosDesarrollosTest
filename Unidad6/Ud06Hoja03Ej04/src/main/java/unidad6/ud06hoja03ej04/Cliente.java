@@ -18,12 +18,12 @@ public class Cliente {
             if (nombre.length() < 3) {
                 throw new IllegalArgumentException("El nombre debe tener al menos 3 caracteres");
             }
-            if (telefono.length() != 9 || !telefono.matches("\\d+")) {
+            if (telefono.length() != 9 || !telefono.matches("\\d{9}")) {
                 throw new IllegalArgumentException("El teléfono debe tener 9 dígitos");
             }
-            if (this.fechaEntrada == null || !this.fechaEntrada.toString().matches("\\d{4}-\\d{2}-\\d{2}")) {
-                throw new IllegalArgumentException("La fecha de entrada no tiene el formato correcto (AAAA-MM-DD)");
-            }
+            //if (this.fechaEntrada == null || !this.fechaEntrada.toString().matches("\\d{4}-\\d{2}-\\d{2}")) {
+            //    throw new IllegalArgumentException("La fecha de entrada no tiene el formato correcto (AAAA-MM-DD)");
+            //}
             this.nombre = nombre;
             this.telefono = telefono;
             this.fechaEntrada = LocalDateTime.now();

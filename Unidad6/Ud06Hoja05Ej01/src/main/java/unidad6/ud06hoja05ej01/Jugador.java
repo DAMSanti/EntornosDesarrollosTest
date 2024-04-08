@@ -48,7 +48,6 @@ public class Jugador implements Comparable<Jugador> {
         // return this.nombre.equalsIgnoreCase(other.nombre);
     }
 
-    @Override
     public int compareTo(Jugador o) {
         int aux = 0;
         if (this.estatura < o.estatura) {
