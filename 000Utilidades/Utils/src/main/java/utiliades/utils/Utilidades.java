@@ -2,6 +2,7 @@ package utiliades.utils;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.PatternSyntaxException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -50,10 +51,14 @@ public class Utilidades {
         do {
             System.out.println(mensaje);
             input = leerString();
-            if (!input.matches(expresionRegular)) {
-                System.out.println("La cadena no cumple con la expresión regular");
-            } else {
-                valido = true;
+            try {
+                if (!input.matches(expresionRegular)) {
+                    System.out.println("La cadena no cumple con la expresión regular");
+                } else {
+                    valido = true;
+                }
+            } catch (PatternSyntaxException e) {
+                System.out.println("Error: Expresión regular inválida. Introduce una expresión regular correcta.");
             }
         } while (!valido);
         return input;
@@ -65,13 +70,17 @@ public class Utilidades {
         do {
             System.out.println(mensaje);
             input = leerString();
-            if (input.length() < longitudMinima || input.length() > longitudMaxima) {
-                System.out
-                        .println("La longitud de la cadena debe ser entre " + longitudMinima + " y " + longitudMaxima);
-            } else if (!input.matches(expresionRegular)) {
-                System.out.println("La cadena no cumple con la expresión regular");
-            } else {
-                valido = true;
+            try {
+                if (input.length() < longitudMinima || input.length() > longitudMaxima) {
+                    System.out.println(
+                            "La longitud de la cadena debe ser entre " + longitudMinima + " y " + longitudMaxima);
+                } else if (!input.matches(expresionRegular)) {
+                    System.out.println("La cadena no cumple con la expresión regular");
+                } else {
+                    valido = true;
+                }
+            } catch (PatternSyntaxException e) {
+                System.out.println("Error: Expresión regular inválida. Introduce una expresión regular correcta.");
             }
         } while (!valido);
         return input;
@@ -267,6 +276,8 @@ public class Utilidades {
     ///////////////// INTRODUCCION DE FECHAS //////////////////////////
     ///////////////////////////////////////////////////////////////////
     // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM", new Locale("es", "ES")); // Para meses en español
+    // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public static LocalDate leerFecha() {
         Scanner teclado = new Scanner(System.in);
@@ -299,4 +310,96 @@ public class Utilidades {
         } while (!valido);
         return LocalDate.parse(input, formatoFecha);
     }
+
+    public static LocalDate leerFechaAnterior() {
+        LocalDate fechaActual = LocalDate.now();
+        LocalDate fechaIngresada = leerFecha();
+        while (fechaIngresada.isAfter(fechaActual)) {
+            System.out.println("Error: La fecha ingresada debe ser anterior a la fecha actual. Inténtalo de nuevo.");
+            fechaIngresada = leerFecha();
+        }
+        return fechaIngresada;
+    }
+
+    public static LocalDate leerFechaAnterior(String mensaje) {
+        System.out.println(mensaje);
+        return leerFechaAnterior();
+    }
+
+    public static LocalDate leerFechaAnterior(String mensaje, DateTimeFormatter formatoFecha) {
+        String input;
+        boolean valido = false;
+        do {
+            System.out.println(mensaje);
+            input = leerString();
+            try {
+                LocalDate fechaIngresada = LocalDate.parse(input, formatoFecha);
+                LocalDate fechaActual = LocalDate.now();
+                if (fechaIngresada.isAfter(fechaActual)) {
+                    System.out.println(
+                            "Error: La fecha ingresada debe ser anterior a la fecha actual. Inténtalo de nuevo.");
+                } else {
+                    valido = true;
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Error: Formato de fecha inválido. Introduce una fecha en el formato correcto.");
+            }
+        } while (!valido);
+        return LocalDate.parse(input, formatoFecha);
+    }
+
+    ///////////////////////////////////////////////////////////////////
+    ///////////////// INTRODUCCION DE HORAS ///////////////////////////
+    ///////////////////////////////////////////////////////////////////
+
+    public static String leerHora() {
+        Scanner teclado = new Scanner(System.in);
+        return teclado.next();
+    }
+
+    public static String leerHora(String mensaje) {
+        System.out.println(mensaje);
+        return leerHora();
+    }
+
+    public static String leerHora(String mensaje, DateTimeFormatter formatoHora) {
+        String input;
+        boolean valido = false;
+        do {
+            System.out.println(mensaje);
+            input = leerString();
+            try {
+                formatoHora.parse(input);
+                valido = true;
+            } catch (DateTimeParseException e) {
+                System.out.println("Error: Formato de hora inválido. Introduce una hora en el formato correcto.");
+            }
+        } while (!valido);
+        return input;
+    }
+
 }
+
+/*
+ * Expresiones regulares útiles:
+ * 
+ * Coincidir con cualquier carácter: .
+ * 
+ * Coincidir con cualquier número: \d
+ * 
+ * Coincidir con cualquier letra (mayúscula o minúscula): [a-zA-Z]
+ * 
+ * Coincidir con una dirección de correo electrónico:
+ * ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$
+ * 
+ * Coincidir con una URL:
+ * ^(http|https|ftp)://[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,6})?(:[0-9]{2,5})?(/.*)?$
+ * 
+ * Coincidir con una fecha en formato YYYY-MM-DD: ^\d{4}-\d{2}-\d{2}$
+ * 
+ * Coincidir con un número de teléfono de 10 dígitos: ^\d{10}$
+ * 
+ * Coincidir con una cadena de texto que contenga solo letras y números, y que
+ * tenga entre 6 y 16 caracteres de longitud: ^[a-zA-Z0-9]{6,16}$
+ * 
+ */

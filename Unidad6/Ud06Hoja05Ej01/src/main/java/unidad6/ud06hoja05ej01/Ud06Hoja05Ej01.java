@@ -10,8 +10,8 @@ public class Ud06Hoja05Ej01 {
 
     public static void main(String[] args) {
         Jugador j1 = new Jugador("Kobe Briant", 2.12);
-        Jugador j2 = new Jugador("Michael Jordan", 2.03);
-        Jugador j3 = new Jugador("michael jordan", 2.07);
+        Jugador j2 = new Jugador("michael jordan", 2.03);
+        Jugador j3 = new Jugador("Michael Jordan", 2.07);
         Jugador j4 = new Jugador("Pau Gasol", 1.97);
         
         Equipo e1 = new Equipo();
@@ -21,6 +21,7 @@ public class Ud06Hoja05Ej01 {
         e1.insertaJugador(j2);
         e1.insertaJugador(j1);
         
+        System.out.println(e1.mostrar() + "\n\n\n");
         
         e1.borrarJugador(e1.buscarJugador("Kobe Briant"));
         //e1.borrarJugador(j3);
