@@ -20,7 +20,6 @@ public class Equipo {
         } else {
             System.out.println("No se ha podido añadir el jugador a la lista.");
         }
-        ;
     }
 
     public Jugador buscarJugador(String jugador) {
