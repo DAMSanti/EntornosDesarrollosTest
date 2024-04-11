@@ -9,7 +9,7 @@ import java.util.Comparator;
 public class JugadorComparator implements Comparator<Jugador> {
     @Override
     public int compare(Jugador j1, Jugador j2) {
-        if (j1.getNombre().equalsIgnoreCase(j2.getNombre())) {
+        if ((j1.getNombre().equalsIgnoreCase(j2.getNombre()) && (j1.getEstatura() == j2.getEstatura()))) {
             return 0;
         }
         return Double.compare(j1.getEstatura(), j2.getEstatura());
