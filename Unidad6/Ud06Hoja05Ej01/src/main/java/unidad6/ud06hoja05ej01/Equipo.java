@@ -1,6 +1,7 @@
 package unidad6.ud06hoja05ej01;
 
 import java.util.Iterator;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
@@ -8,7 +9,7 @@ import java.util.TreeSet;
  * @author DAM104
  */
 public class Equipo {
-    private TreeSet<Jugador> plantilla;
+    private SortedSet<Jugador> plantilla;
 
     public Equipo() {
         plantilla = new TreeSet<>(new JugadorComparator());
@@ -53,6 +54,42 @@ public class Equipo {
         return cadena;
     }
 
+    public Jugador masBajo() {
+        /* double minest = 300;
+        Jugador bajo = null;
+        for (Jugador jugador : plantilla) {
+            if (jugador.getEstatura()<minest) {
+                minest = jugador.getEstatura();
+                bajo = jugador;
+            }
+        }*/
+        return plantilla.first();
+        //return bajo;
+    }
+    
+    public Jugador masAlto() {
+        /*double maxest = 0;
+        Jugador alto = null;
+        for (Jugador jugador : plantilla) {
+            if (jugador.getEstatura()>maxest) {
+                maxest = jugador.getEstatura();
+                alto = jugador;
+            }
+        }*/
+        //return alto;
+        return plantilla.last();
+    }
+    
+    public SortedSet<Jugador> dosMetros() {
+        SortedSet<Jugador> dosMetros;
+        dosMetros = new TreeSet<>();
+        for (Jugador jugador : plantilla) {
+            if (jugador.getEstatura()>2) {
+                dosMetros.add(jugador);
+            }
+        }
+        return dosMetros;
+    }
 }
 
 /*

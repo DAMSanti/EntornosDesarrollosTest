@@ -1,13 +1,11 @@
 package unidad6.ud06hoja05ej01;
 
-import java.util.Comparator;
-import java.util.Objects;
 
 /**
  *
  * @author DAM104
  */
-public class Jugador implements Comparable<Jugador> {
+public class Jugador {
     private String nombre;
     private double estatura;
 
@@ -22,41 +20,7 @@ public class Jugador implements Comparable<Jugador> {
 
     public double getEstatura() {
         return estatura;
-    }
-/*
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + Objects.hash(this.nombre.toLowerCase());
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Jugador other = (Jugador) obj;
-        return nombre.equalsIgnoreCase(other.nombre);
-        // return Objects.equals(this.nombre.toLowerCase(), other.nombre.toLowerCase());
-        // return this.nombre.equalsIgnoreCase(other.nombre);
-    }
-*/
-    public int compareTo(Jugador o) {
-        int aux = 0;
-        if (this.estatura < o.estatura) {
-            aux = 1;
-        } else if (this.estatura > o.estatura) {
-            aux = -1;
-        }
-        return aux;
-    }
+    } 
 
     @Override
     public String toString() {
@@ -86,3 +50,31 @@ public class Jugador implements Comparable<Jugador> {
  * Crear un menú en la clase Principal y probar los métodos anteriores
  * 
  */
+
+
+/*
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hash(this.nombre.toLowerCase());
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Jugador other = (Jugador) obj;
+        return nombre.equalsIgnoreCase(other.nombre);
+        // return Objects.equals(this.nombre.toLowerCase(), other.nombre.toLowerCase());
+        // return this.nombre.equalsIgnoreCase(other.nombre);
+    }
+*/
+    
