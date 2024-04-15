@@ -2,6 +2,7 @@ package unidad6.ud06hoja7ej01;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 
 /**
  *
@@ -62,12 +63,18 @@ public class Ud06Hoja7Ej01 {
                         System.out.println("Que cuentas quieres listar?\n\n1- Cuentas de Ahorros\n2- Cuentas Corrientes\n3- Todas las cuentas\nElige una opcion:");
                         switch(Teclado.leerInt()) {
                             case 1-> {
-                                for (HashMap.Entry<String, Object> entry : hashMap.entrySet()) {
-                                System.out.println("Clave = " + entry.getKey() + ", Valor = " + entry.getValue());                               
+                                //for (HashMap.Entry<String, Object> entry : hashMap.entrySet()) {
+                                //System.out.println("Clave = " + entry.getKey() + ", Valor = " + entry.getValue());                               
                             }
-                            case 2->;
-                            case 3->;
-                            default ->;
+                            case 2->{
+                            
+                            }
+                            case 3->{
+                            
+                            }
+                            default ->{
+                            
+                            }
                         }
                     }while (!exit);
                 }
