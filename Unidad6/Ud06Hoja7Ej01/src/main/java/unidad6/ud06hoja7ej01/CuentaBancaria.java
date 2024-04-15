@@ -37,7 +37,7 @@ public abstract class CuentaBancaria implements Identificable {
         Map<String, String> cuenta = new HashMap<>();
         cuenta.put("Titular", titular.getNombre().concat(" ").concat(titular.getApellidos()));
         cuenta.put("Saldo", String.valueOf(saldo));
-        cuenta.put("CC", entidad.concat("-").concat(oficina).concat("-").concat(this.cuenta));
+        cuenta.put("CCC", entidad.concat("-").concat(oficina).concat("-").concat(this.cuenta));
         return cuenta;
     }
 

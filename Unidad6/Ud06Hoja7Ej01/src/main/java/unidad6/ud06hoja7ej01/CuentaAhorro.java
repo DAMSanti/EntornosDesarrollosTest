@@ -16,14 +16,24 @@ public class CuentaAhorro extends CuentaBancaria {
         this.tipoInteres = tipoInteres;
     }
     
-    
     @Override
     public void ingresar(double cantidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (cantidad > 0) {
+            saldo += cantidad;
+        } else {
+            throw new Exception("Cantidad negativa.");
+        }
     }
 
     @Override
     public void retirar(double cantidad) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (cantidad < 0) {
+            throw new Exception("Cantidad negativa");
+        }
+        if (saldo >= cantidad ) {
+            saldo -=cantidad;
+        } else {
+            throw new Exception("Saldo insuficiente");
+        }
     }
 }
