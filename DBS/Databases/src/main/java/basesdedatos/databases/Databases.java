@@ -14,21 +14,21 @@ import java.sql.Statement;
 
 public class Databases {
     public static void retrieveDataFromMySQL() {
-        String url = "jdbc:mysql://192.168.1.40:3306/municipios";
+        String url = "jdbc:mysql://localhost:3306/ligatercera";
         String username = "root";
-        String password = "root";
+        String password = "mysql";
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
                 Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM localidades")) {
-
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM equipos")) {
+               
             while (resultSet.next()) {
                 ResultSetMetaData metaData = resultSet.getMetaData();
                 int columnCount = metaData.getColumnCount();
-                for (int i = 1; i <= columnCount; i++) {
-                    String columnName = metaData.getColumnName(i);
-                    System.out.println("Column Name: " + columnName);
-                }
+                //for (int i = 1; i <= columnCount; i++) {
+                    //String columnName = metaData.getColumnName(i);
+                    //System.out.println("Column Name: " + columnName);
+                //}
 
                 while (resultSet.next()) {
                     for (int i = 1; i <= columnCount; i++) {
