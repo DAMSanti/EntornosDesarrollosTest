@@ -25,7 +25,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + '}';
+        return "Usuario{" + "id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + "}\n";
     }
 
     public int getId() {

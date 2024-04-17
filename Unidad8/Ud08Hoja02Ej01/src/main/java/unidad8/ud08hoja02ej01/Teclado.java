@@ -1,23 +1,23 @@
-package utiliades.utils;
+package unidad8.ud08hoja02ej01;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.PatternSyntaxException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 /**
  *
- * @author Santiago Tamayo
+ * @author DAM104
  */
 
-public class Utilidades {
+public class Teclado {
 
-    ///////////////////////////////////////////////////////////////////
-    ////////////// INTRODUCCION DE CADENAS DE CARACTERES //////////////
-    ///////////////////////////////////////////////////////////////////
-
+///////////////////////////////////////////////////////////////////
+////////////// INTRODUCCION DE CADENAS DE CARACTERES //////////////
+///////////////////////////////////////////////////////////////////
     public static String leerString() {
         Scanner teclado = new Scanner(System.in);
         return teclado.nextLine();
@@ -36,8 +36,7 @@ public class Utilidades {
             System.out.println(mensaje);
             input = leerString();
             if (input.length() < longitudMinima || input.length() > longitudMaxima) {
-                System.out
-                        .println("La longitud de la cadena debe ser entre " + longitudMinima + " y " + longitudMaxima);
+                System.out.println("La longitud de la cadena debe ser entre " + longitudMinima + " y " + longitudMaxima);
             } else {
                 valido = true;
             }
@@ -73,7 +72,8 @@ public class Utilidades {
             try {
                 if (input.length() < longitudMinima || input.length() > longitudMaxima) {
                     System.out.println(
-                            "La longitud de la cadena debe ser entre " + longitudMinima + " y " + longitudMaxima);
+                            "La longitud de la cadena debe ser entre " + longitudMinima + " y "
+                            + longitudMaxima);
                 } else if (!input.matches(expresionRegular)) {
                     System.out.println("La cadena no cumple con la expresión regular");
                 } else {
@@ -85,10 +85,9 @@ public class Utilidades {
         } while (!valido);
         return input;
     }
-
-    ///////////////////////////////////////////////////////////////////
-    ///////////////// INTRODUCCION DE NUMEROS ENTEROS /////////////////
-    ///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////// INTRODUCCION DE NUMEROS ENTEROS /////////////////
+///////////////////////////////////////////////////////////////////
 
     public static int leerInt() {
         Scanner teclado = new Scanner(System.in);
@@ -97,6 +96,7 @@ public class Utilidades {
         } catch (InputMismatchException e) {
             System.out.println("Error: Debes ingresar un número entero");
             teclado.nextLine();
+
             return leerInt();
         }
     }
@@ -152,10 +152,9 @@ public class Utilidades {
         } while (!valido);
         return input;
     }
-
-    ///////////////////////////////////////////////////////////////////
-    ///////////////// INTRODUCCION DE NUMEROS DECIMALES ///////////////
-    ///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////// INTRODUCCION DE NUMEROS DECIMALES ///////////////
+///////////////////////////////////////////////////////////////////
 
     public static double leerDouble() {
         Scanner teclado = new Scanner(System.in);
@@ -220,10 +219,9 @@ public class Utilidades {
         } while (!valido);
         return input;
     }
-
-    ///////////////////////////////////////////////////////////////////
-    ///////////////// INTRODUCCION DE CARACTERES //////////////////////
-    ///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////// INTRODUCCION DE CARACTERES //////////////////////
+///////////////////////////////////////////////////////////////////
 
     public static char leerChar() {
         Scanner teclado = new Scanner(System.in);
@@ -252,10 +250,9 @@ public class Utilidades {
         } while (!valido);
         return input;
     }
-
-    ///////////////////////////////////////////////////////////////////
-    ///////////////// INTRODUCCION DE BOOLEANOS ///////////////////////
-    ///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////// INTRODUCCION DE BOOLEANOS ///////////////////////
+///////////////////////////////////////////////////////////////////
 
     public static boolean leerBoolean() {
         Scanner teclado = new Scanner(System.in);
@@ -271,17 +268,12 @@ public class Utilidades {
         System.out.println(mensaje);
         return leerBoolean();
     }
-
-    ///////////////////////////////////////////////////////////////////
-    ///////////////// INTRODUCCION DE FECHAS //////////////////////////
-    ///////////////////////////////////////////////////////////////////
-    // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-    // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM", new
-    /////////////////////////////////////////////////////////////////// Locale("es",
-    /////////////////////////////////////////////////////////////////// "ES")); //
-    /////////////////////////////////////////////////////////////////// Para meses
-    /////////////////////////////////////////////////////////////////// en español
-    // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+///////////////////////////////////////////////////////////////////
+///////////////// INTRODUCCION DE FECHAS //////////////////////////
+///////////////////////////////////////////////////////////////////
+// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM", new Locale("es", "ES")); // Para meses en español 
+// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public static LocalDate leerFecha() {
         Scanner teclado = new Scanner(System.in);
@@ -351,10 +343,49 @@ public class Utilidades {
         } while (!valido);
         return LocalDate.parse(input, formatoFecha);
     }
-
-    ///////////////////////////////////////////////////////////////////
-    ///////////////// INTRODUCCION DE HORAS ///////////////////////////
-    ///////////////////////////////////////////////////////////////////
+    
+///////////////////////////////////////////////////////////////////
+///////////////// INTRODUCCION DE DATETIME ////////////////////////
+///////////////////////////////////////////////////////////////////    
+ 
+    public static LocalDateTime leerFechaHora() {
+        Scanner teclado = new Scanner(System.in);
+        String fechaStr = teclado.next();
+        try {
+            return LocalDateTime.parse(fechaStr);
+        } catch (DateTimeParseException e) {
+            System.out.println("Error: Formato de fecha inválido. Introduce una fecha en el formato correcto.");
+            return leerFechaHora();
+        }
+    }   
+    
+    
+    public static LocalDateTime leerFechaHoraPosterior(String mensaje, DateTimeFormatter formatoFecha) {
+        String input;
+        boolean valido = false;
+        do {
+            System.out.println(mensaje);
+            input = leerString();
+            try {
+                LocalDate fechaIngresada = LocalDate.parse(input, formatoFecha);
+                LocalDate fechaActual = LocalDate.now();
+                if (fechaIngresada.isBefore(fechaActual)) {
+                    System.out.println(
+                            "Error: La fecha ingresada debe ser posterior a la fecha actual. Inténtalo de nuevo.");
+                } else {
+                    valido = true;
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Error: Formato de fecha inválido. Introduce una fecha en el formato correcto.");
+            }
+        } while (!valido);
+        return LocalDateTime.parse(input, formatoFecha);
+    }   
+    
+    
+///////////////////////////////////////////////////////////////////
+///////////////// INTRODUCCION DE HORAS ///////////////////////////
+///////////////////////////////////////////////////////////////////
 
     public static String leerHora() {
         Scanner teclado = new Scanner(System.in);
@@ -381,11 +412,9 @@ public class Utilidades {
         } while (!valido);
         return input;
     }
-
-    /////////////////////////////////////////////////
-    ///////////////// VALIDACIONES //////////////////
-    /////////////////////////////////////////////////
-
+    
+    
+    
     public static boolean validarDNI(String dni) {
         boolean valido = false;
         String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
@@ -398,78 +427,7 @@ public class Utilidades {
             }
         }
         return valido;
-    }
-
-    public static boolean validarMatricula(String matricula) {
-        String letras = matricula.substring(5, 7);
-        String letrasPermitidas = "[BCDFGHJKLMNPRSTVWXYZ]+{3}";
-        if (letras.matches(letrasPermitidas)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean validarCuenta(String cc) {
-        String tmpentidad = cc.substring(0, 4);
-        String tmpoficina = cc.substring(5, 9);
-        String tmpcontrol = cc.substring(10, 12);
-        String tmpcuenta = cc.substring(13, 23);
-        return tmpcontrol.equals(calculaControl(tmpentidad, tmpoficina, tmpcuenta));
-    }
-
-    public static String calculaControl(String entidad, String oficina, String cuenta) {
-        int[] factores = { 1, 2, 4, 8, 5, 10, 9, 7, 3, 6 };
-        int dc = 0;
-        for (int i = 0; i < 2; i++) {
-            String parte = (i == 0) ? "00" + entidad + oficina : cuenta;
-            int suma = 0;
-
-            for (int j = 0; j < 10; j++) {
-                suma += Character.getNumericValue(parte.charAt(j)) * factores[j];
-            }
-
-            int resto = 11 - (suma % 11);
-            if (resto == 10) {
-                resto = 1;
-            }
-            if (resto == 11) {
-                resto = 0;
-            }
-            if (i == 0) {
-                dc = 10 * resto;
-            } else {
-                dc = dc + resto;
-            }
-        }
-        return String.valueOf(dc);
-    }
-
-    public static boolean validarCodigoPostal(String cp) {
-        return Integer.parseInt(cp.substring(0, 2)) <= 52;
-    }
+    }    
 
 }
 
-/*
- * Expresiones regulares útiles:
- * 
- * Coincidir con cualquier carácter: .
- * 
- * Coincidir con cualquier número: \d
- * 
- * Coincidir con cualquier letra (mayúscula o minúscula): [a-zA-Z]
- * 
- * Coincidir con una dirección de correo electrónico:
- * ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$
- * 
- * Coincidir con una URL:
- * ^(http|https|ftp)://[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,6})?(:[0-9]{2,5})?(/.*)?$
- * 
- * Coincidir con una fecha en formato YYYY-MM-DD: ^\d{4}-\d{2}-\d{2}$
- * 
- * Coincidir con un número de teléfono de 10 dígitos: ^\d{10}$
- * 
- * Coincidir con una cadena de texto que contenga solo letras y números, y que
- * tenga entre 6 y 16 caracteres de longitud: ^[a-zA-Z0-9]{6,16}$
- * 
- */

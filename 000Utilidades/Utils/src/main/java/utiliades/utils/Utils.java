@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 public class Utils {
 
     public static void main(String[] args) {
-        String frase;
+        // String frase;
         // frase = Utilidades.leerString("Introduce un texto(sin restriccion): ");
         // System.out.println(frase);
         // frase = Utilidades.leerString("Introduce un texto(entre 5 y 15 caracteres):
@@ -36,13 +36,30 @@ public class Utils {
         // decimal = Utilidades.leerDouble("Introduce un número decimal(solo positivos):
         // ", true);
         // System.out.println(decimal);
-        frase = Utilidades.leerString("Introduce un texto(solo letras de 3 a 6 caracteres): ", "\\w");
-        System.out.println(frase);
-        LocalDate fecha;
-        fecha = Utilidades.leerFecha("Introduce una fecha(Formato yyyy-MM-dd): ");
-        System.out.println(fecha);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        fecha = Utilidades.leerFecha("Introduce una fecha(Formato elegido, dd-MM-yyyy en este caso): ", formatter);
-        System.out.println(fecha);
+        // frase = Utilidades.leerString("Introduce un texto(solo letras de 3 a 6
+        // caracteres): ", "\\w");
+        // System.out.println(frase);
+        // LocalDate fecha;
+        // fecha = Utilidades.leerFecha("Introduce una fecha(Formato yyyy-MM-dd): ");
+        // System.out.println(fecha);
+        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        // fecha = Utilidades.leerFecha("Introduce una fecha(Formato elegido, dd-MM-yyyy
+        // en este caso): ", formatter);
+        // System.out.println(fecha);
+
+        if (Utilidades.validarMatricula("1234AAA")) {
+            System.out.println("Matricula correcta");
+        }
+        if (Utilidades.validarMatricula("1234BBB")) {
+            System.out.println("Matricula correcta");
+        }
+        
+        if (Utilidades.validarCodigoPostal("39300")) {
+            System.out.println("CP correcto");
+        }
+        
+        if (Utilidades.validarCodigoPostal("67300")) {
+            System.out.println("CP correcto");
+        }
     }
 }

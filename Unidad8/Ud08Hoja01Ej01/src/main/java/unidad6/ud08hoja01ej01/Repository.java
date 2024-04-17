@@ -8,7 +8,8 @@ import java.util.List;
  */
 public interface Repository<T> {
     public List<T> listar();
-    public void guardar(T t);
-    public void modificar(T t);
-    public void eliminar( int id);
+    public boolean guardar(T t);
+    public boolean modificar(T t, int n);
+    public T porId( int id);
+    public boolean eliminar( int id);
 }

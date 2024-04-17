@@ -38,7 +38,8 @@ public class UsuarioDAO implements Repository<Usuario> {
     }   
     
     @Override
-    public void guardar(Usuario usuario) {
+    public boolean guardar(Usuario usuario) {
+        boolean correcto = false;
         String sql = null;
         if (usuario.getId() > 0) {
             System.out.println("Ya existe este usuario");
@@ -51,58 +52,86 @@ public class UsuarioDAO implements Repository<Usuario> {
                 int salida = statement.executeUpdate();
                 if (salida != 1) {
                     throw new Exception(" No se ha insertado/modificado un solo registro");
-                }     
-            } catch (SQLException ex) {
-                System.out.println("SQLException: " + ex.getMessage());
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-    }
-
-    @Override
-    public void modificar(Usuario usuario, int id) {
-        String sql = null;
-        if (usuario.getId() > 0) {
-            sql = "UPDATE usuarios SET username=?,password=?, email=? WHERE id=?";
-            try ( PreparedStatement statement = getConnection().prepareStatement(sql);) {
-                statement.setInt(4, usuario.getId());
-                statement.setString(1, usuario.getUsername());
-                statement.setString(2, usuario.getPassword());
-                statement.setString(3, usuario.getEmail());
-                int salida = statement.executeUpdate();
-                if (salida != 1) {
-                    throw new Exception(" No se ha insertado/modificado un solo registro");
+                } else {
+                    correcto = true;
                 }
             } catch (SQLException ex) {
-                // errores
                 System.out.println("SQLException: " + ex.getMessage());
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-        } else {
-            System.out.println("No se ha encontrado ese usuario");
         }
+        return correcto;
     }
 
     @Override
-    public void eliminar(int id) {
+    public boolean modificar(Usuario usuario, int id) {
+        boolean correcto = false;
+        String sql = null;
+        sql = "UPDATE usuarios SET username=?,password=?, email=? WHERE id=?";
+        try ( PreparedStatement statement = getConnection().prepareStatement(sql);) {
+            statement.setInt(4, id);
+            statement.setString(1, usuario.getUsername());
+            statement.setString(2, usuario.getPassword());
+            statement.setString(3, usuario.getEmail());
+            int salida = statement.executeUpdate();
+            if (salida != 1) {
+                throw new Exception(" No se ha insertado/modificado un solo registro");
+            } else{
+                correcto = true;
+            }
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return correcto;
+    }
+
+    @Override
+    public boolean eliminar(int id) {
+        boolean correcto = false;
         String sql="DELETE FROM usuarios WHERE id=?";
         try ( PreparedStatement statement = getConnection().prepareStatement(sql);) {
                 statement.setInt(1, id);
             int salida = statement.executeUpdate();
             if (salida != 1) {
                 throw new Exception("No se ha borrado un solo registro");
+            } else {
+                correcto = true;
             }
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        return correcto;
     }
+    
+    @Override
+    public Usuario porId(int id) {
+        Usuario usuario = null;
+        String sql = "SELECT id,username,password, email FROM usuarios WHERE id=?";
+        try ( PreparedStatement statement = getConnection().prepareStatement(sql);) {
+            statement.setInt(1, id);
+            try ( ResultSet rs = statement.executeQuery();) {
+                if (rs.next()) {
+                    usuario = creaUsuario(rs);
+                }
+            }
+        } catch (SQLException ex) {
+            // errores
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return usuario;
+    }  
     
     private Usuario creaUsuario(final ResultSet rs) throws SQLException {
         return new Usuario(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getString("email"));
     } 
+
 }
 

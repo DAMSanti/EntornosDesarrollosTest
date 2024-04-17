@@ -9,25 +9,44 @@ import java.util.Scanner;
 public class Ud08Hoja01Ej01 {
 
     public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
         boolean salir = false;
-        Usuario user1 = new Usuario( "Santi", "Tamayo", "asdf@adf.com");
-        Usuario user2 = new Usuario(01, "Paco", "Martinez", "asdf@adf.com");
         UsuarioDAO connection = new UsuarioDAO();
         do {
             System.out.println("GESTION DE BASE DE DATOS USUARIOS\n1.- Actualizar\n2.- Eliminar\n3.- Agregar\n4.- Listar\n5.- Salir");
-            switch(teclado.nextInt()) {
+            switch(Teclado.leerInt("Introduce una opcion: ")) {
                 case 1->{
                     System.out.print("Selecciona la id del usuario que quieres modificar: ");
                     int id = Teclado.leerInt();
-                    
-                    connection.modificar(user2);
+                    try {
+                        System.out.println(connection.porId(id).toString());
+                    } catch (NullPointerException ex) {
+                        System.out.println("No se ha encontrado el usuario"); 
+                    }
+                    String nombre = Teclado.leerString("Introduce el nombre del usuario: ", 3, 15, "^[A-Z][a-z]+( [A-Z][a-z]+)*$");
+                    String password = Teclado.leerString("Introduce la contraseña del usuario", 6, 8, "^[a-zA-Z0-9!%&/._+-@#~€]+$");
+                    String email = Teclado.leerString("Introduzca el email del usuario", "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$");
+                    Usuario aux = new Usuario(nombre, password, email);
+                    connection.modificar(aux, id);
                 }
                 case 2->{
-                    connection.eliminar(01);
+                    System.out.print("Selecciona la id del usuario que quieres eliminar: ");
+                    int id = Teclado.leerInt();
+                    if (connection.eliminar(id)) {
+                        System.out.println("Se ha eliminado el usuario de forma correcta");
+                    } else {
+                        System.out.println("No se ha podido eliminar ese elemento.");
+                    }
                 }
                 case 3->{
-                    connection.guardar(user1);
+                    String nombre = Teclado.leerString("Introduce el nombre del usuario: ", 3, 15, "^[A-Z][a-z]+( [A-Z][a-z]+)*$");
+                    String password = Teclado.leerString("Introduce la contraseña del usuario", 6, 8, "^[a-zA-Z0-9!%&/._+-@#~€]+$");
+                    String email = Teclado.leerString("Introduzca el email del usuario", "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$");
+                    Usuario aux = new Usuario(nombre, password, email);
+                    if (connection.guardar(aux)) {
+                        System.out.println("Se ha introducido correctamente el usuario");
+                    } else {
+                        System.out.println("Ha habido un problema al introducir el usuario.");
+                    }
                 }
                 case 4->{
                     System.out.println(connection.listar().toString());

@@ -1,4 +1,4 @@
-package unidad6.ud08hoja01ej01;
+package unidad8.ud08hoja02ej01;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,16 +7,16 @@ import java.util.Properties;
 
 /**
  *
- * @author DAM104
+ * @author rathm
  */
-public class ConectaUsuario {
+public class MySQL {
     private Connection connection = null;
-    private static final String BD = "bd_prog_01";
+    private static final String BD = "java_02_clinica";
     private static final String USUARIO = "root";
     private static final String CLAVE = "root";
     private static final String URL = "jdbc:mysql://localhost:3306/" + BD;    
     
-    private ConectaUsuario() {
+    private MySQL() {
         try {
             Properties properties = new Properties();
             properties.setProperty("user", USUARIO);
@@ -34,12 +34,12 @@ public class ConectaUsuario {
         }
     }
     
-    public static ConectaUsuario getInstance() {
-        return AccesoUsuariosHolder.INSTANCE;
+    public static MySQL getInstance() {
+        return AccesoHolder.INSTANCE;
     }
     
-    private static class AccesoUsuariosHolder {
-        private static final ConectaUsuario INSTANCE = new ConectaUsuario();
+    private static class AccesoHolder {
+        private static final MySQL INSTANCE = new MySQL();
     }
     
     public Connection getConnection() {
@@ -57,5 +57,5 @@ public class ConectaUsuario {
             System.out.println("Se produjo un error en el cierre");
         }
         return siCerrada;
-    }
+    }    
 }
