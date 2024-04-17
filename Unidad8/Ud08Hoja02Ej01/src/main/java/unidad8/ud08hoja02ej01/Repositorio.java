@@ -8,7 +8,7 @@ import java.util.List;
  * @author rathm
  */
 public interface Repositorio<T> {
-    public List<T> listar();
+    public List<T> listar(Object obj);
     public boolean crear(T t);
     public T buscar(String t);  
 }

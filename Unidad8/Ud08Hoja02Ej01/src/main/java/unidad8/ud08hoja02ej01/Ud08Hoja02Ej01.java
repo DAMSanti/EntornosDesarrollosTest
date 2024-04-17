@@ -13,6 +13,7 @@ public class Ud08Hoja02Ej01 {
     public static void main(String[] args) {
         boolean salir = false ;
         PacienteDAO p1 = new PacienteDAO();
+        VisitasDAO v1 = new VisitasDAO();
         do {
             System.out.println("CLINICA DENTAL DAM!");
             System.out.println("1.-Insertar paciente\n2.-Crear visita\n3.- Mostrar agenda\n4.-Consultar visitas\n5.-Salir");
@@ -79,6 +80,11 @@ public class Ud08Hoja02Ej01 {
                         }
                         String comentario = Teclado.leerString("Si quiere introducir un comentario, hágalo a continuación: ");
                         Visita vis = new Visita(dni, fecha, tratamiento, comentario);
+                        if (v1.crear(vis)) {
+                            System.out.println("Visita añadida satisfactoriamente");
+                        } else { 
+                            System.out.println("Se ha producido un error al introducir la visita.");
+                        }
                     }
                 }
                 case 3-> {

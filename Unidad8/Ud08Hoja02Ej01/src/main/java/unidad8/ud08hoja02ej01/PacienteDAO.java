@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  *
@@ -17,7 +20,7 @@ public class PacienteDAO implements Repositorio<Paciente> {
     }
 
     @Override
-    public List<Paciente> listar() {
+    public List<Paciente> listar(Object fec) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

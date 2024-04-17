@@ -19,4 +19,22 @@ public class Visita {
         this.tratamiento = tratamiento;
         this.observaciones = observaciones;
     }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public Tratamiento getTratamiento() {
+        return tratamiento;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+    
+    
 }
