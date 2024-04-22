@@ -13,7 +13,7 @@ public class MySQL {
     private Connection connection = null;
     private static final String BD = "java_02_clinica";
     private static final String USUARIO = "root";
-    private static final String CLAVE = "root";
+    private static final String CLAVE = "admin";
     private static final String URL = "jdbc:mysql://localhost:3306/" + BD;    
     
     private MySQL() {

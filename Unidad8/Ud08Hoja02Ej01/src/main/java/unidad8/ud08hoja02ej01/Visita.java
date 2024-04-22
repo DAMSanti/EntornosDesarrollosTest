@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
  * @author rathm
  */
 public class Visita {
-    private int id;
     private String dni;
     private LocalDateTime fecha;
     private Tratamiento tratamiento;
@@ -34,6 +33,11 @@ public class Visita {
 
     public String getObservaciones() {
         return observaciones;
+    }
+
+    @Override
+    public String toString() {
+        return "Visita{" + "dni=" + dni + ", fecha=" + fecha + ", tratamiento=" + tratamiento + ", observaciones=" + observaciones + '}';
     }
     
     

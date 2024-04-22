@@ -1,7 +1,10 @@
 package unidad8.ud08hoja02ej01;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  *
@@ -46,7 +49,7 @@ public class Ud08Hoja02Ej01 {
                 case 2-> {
                     boolean valido = false;
                     Tratamiento tratamiento = null;
-                    System.out.println("Introduccion de un nuevo paciente");
+                    System.out.println("Introduccion de una nueva visita");
                     String dni;
                     do {
                         dni = Teclado.leerString("Introduce el numero de DNI del contacto. (00000000A)", 9, 9, "^[0-9]{8}[A-Z]$");
@@ -88,10 +91,29 @@ public class Ud08Hoja02Ej01 {
                     }
                 }
                 case 3-> {
-                   
+                    System.out.println("MOSTRAR AGENDA DE UN DIA");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    LocalDate fechaTeclado =Teclado.leerFecha("Introduzca la fecha de la que quiere ver las citas", formatter);
+                    ArrayList<Visita> visitas = v1.mostrarVisitas(fechaTeclado);
+                    for (Visita visita : visitas) {
+                        System.out.println(visita.toString());
+                    }
                 }
                 case 4-> {
-                    
+                    System.out.println("MOSTRAR VISITAS POR PACIENTE");
+                    boolean valido = false;
+                    String dni;
+                    do {
+                        dni = Teclado.leerString("Introduce el numero de DNI del contacto. (00000000A)", 9, 9, "^[0-9]{8}[A-Z]$");
+                        valido = Teclado.validarDNI(dni);
+                        if (!valido) {
+                            System.out.println("El dni introducido no es correcto.");
+                        }
+                    } while (!valido);
+                    LinkedList<Visita> visitas = v1.mostrarVisitasPaciente(dni);
+                    for (Visita visita : visitas) {
+                        System.out.println(visita.toString());
+                    }
                 }
                 case 5-> {
                     salir = true;

@@ -10,5 +10,5 @@ import java.util.List;
 public interface Repositorio<T> {
     public List<T> listar(Object obj);
     public boolean crear(T t);
-    public T buscar(String t);  
+    public T buscar(String t);
 }
